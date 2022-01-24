@@ -51,10 +51,8 @@ function App() {
   
 ## Authors
 
-- [@Katharina](https://github.com/KatWeid)
-- [@Niklas](https://github.com/WeitzelN)
-- [@Inka](https://github.com/JuaKaliKubwa)
-- [@Marian](https://github.com/Kallonaut)
+- [@bob](https://www.github.com/bob)
+- [@alice](https://www.github.com/alice)
 
   
 
