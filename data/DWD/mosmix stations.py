@@ -1,16 +1,11 @@
 import pandas as pd
+import os
 
-#pd.read_csv('data\weather\DWD\mosmix_stations.txt', names=['Date','AgentName','Group','Direction'], skiprows=1, sep='\t')
+__location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+path_text=os.path.join(__location__,"mosmix_stations.txt")
+encoding='iso-8859-1'
 
-#df=pd.read_csv('data\weather\DWD\mosmix_stations.txt', sep='\t',encoding='utf-8-sig')
-#print(df)
-
-import magic
-
-
-blob = open('data\weather\DWD\mosmix_stations.txt', 'rb').read()
-m = magic.Magic(mime_encoding=True)
-encoding = m.from_buffer(blob)
-
-df=pd.read_csv('data\weather\DWD\mosmix_stations.txt', sep='\t',encoding=encoding)
+df=pd.read_csv(path_text, sep=' ',encoding=encoding, skiprows=2)
+df_stations=df["id","name"]
 print(df)
