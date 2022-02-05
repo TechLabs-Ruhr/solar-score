@@ -1,0 +1,34 @@
+.solarscore__header {
+    display: flex;
+    flex-direction: row;
+}
+
+.solarscore__header-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+   
+    margin-right: 5rem;
+}
+
+.solarscore__header-content h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.solarscore__header-content p {
+    font-family: var(--font-family);
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    
+    color:aliceblue;
+    margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 1050px)
