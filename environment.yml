@@ -138,3 +138,4 @@ dependencies:
     - yarl==1.7.2
     - zict==2.0.0
     - zipp==3.7.0
+prefix: C:\Users\Marian\anaconda3\envs\solar
