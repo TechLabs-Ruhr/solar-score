@@ -1,15 +1,16 @@
 import datetime
-from wetterdienst.provider.dwd.forecast import (
+from wetterdienst.provider.dwd.mosmix import (
     DwdForecastDate,
     DwdMosmixRequest,
     DwdMosmixType,
 )
+from wetterdienst import Settings
 from pytz import timezone
 
 #start time
 
 
-def weather_forecast(station_id, weather_parameters,starttime=None, humanize=True):
+def weather_forecast(station_id, weather_parameters, starttime=None, humanize=True):
     """
     Gives back a df with the weather forecast for a chosen weather station for
     a list of weather parameters from a set start time until forecast data
@@ -23,6 +24,8 @@ def weather_forecast(station_id, weather_parameters,starttime=None, humanize=Tru
             df_weather_forecast: df with weather forecast for chosen parameters
     """
 
+    Settings.tidy = False
+    Settings.humanize = humanize
 
    #MOSMIX_S (24x daily, 40 parameters, up to +240h)     
    #tidy: tidy df (parameter gets extra column), humanize: rename short names --> description
@@ -30,8 +33,6 @@ def weather_forecast(station_id, weather_parameters,starttime=None, humanize=Tru
         parameter=weather_parameters,
         start_issue=DwdForecastDate.LATEST, 
         mosmix_type=DwdMosmixType.SMALL,
-        tidy=False,
-        humanize=humanize,
     )
     stations = request.filter_by_station_id(
         station_id,
