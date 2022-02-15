@@ -5,7 +5,7 @@ import os
 
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-path_xml=os.path.join(__location__,"MetElementDefinition.xml")
+path_xml=os.path.join(__location__,"data\MetElementDefinition.xml")
 xmlp = et.XMLParser(encoding="utf-8")
 tree=et.parse(path_xml,parser=xmlp)
 root=tree.getroot()
