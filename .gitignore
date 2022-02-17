@@ -466,3 +466,6 @@ Thumbs.db
 
 # CodeStream plugin
 # https://plugins.jetbrains.com/plugin/12206-codestream
+prediction/examples/tsai/01_Data/data/forecasting/Sunspots.csv
+prediction/test/data/forecasting/Sunspots.csv
+prediction/test/models/model.pth
