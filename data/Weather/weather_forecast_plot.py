@@ -1,11 +1,9 @@
 import pandas as pd
 from matplotlib import pyplot as plt
-from weather_functions.weather_forecast_function import weather_forecast
-
-#Dortmund: 10416
+from weather_forecast import mosmix_forecast
 
 
-df_weather=weather_forecast("10416",["TTT","N","Rad1h"],humanize=False)
+df_weather=mosmix_forecast("August-Schmidt-Straße 1, 44227 Dortmund, Germany",["TTT","N","Rad1h"],humanize=False)
 
 
 fig, axs = plt.subplots(3)
@@ -31,4 +29,3 @@ plt.subplots_adjust(left=0.1,
                     wspace=0.2, 
                     hspace=0.1)
 plt.show()
-print("Test")
