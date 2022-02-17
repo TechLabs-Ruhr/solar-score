@@ -1,16 +1,17 @@
 import getgeo
 import pandas as pd
-from wetterdienst.provider.dwd.forecast import (
+from wetterdienst.provider.dwd.mosmix import (
     DwdForecastDate,
     DwdMosmixRequest,
     DwdMosmixType,
 )
 import wetterdienst as wetterdienst
+from wetterdienst import Settings
 import os
 
 #TODO start time
 
-def mosmix_forecast(address,weather_parameters,humanize=True):
+def mosmix_forecast(address, weather_parameters, humanize=True):
     """
     Gives back a df with the weather forecast for the nearest weather station to a chosen address.
         Parameters:
@@ -51,7 +52,7 @@ def mosmix_forecast(address,weather_parameters,humanize=True):
     #get nearest weather station
     __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    path_mosmix=os.path.join(__location__,"DWD data\mosmix stations cleaned.csv")
+    path_mosmix=os.path.join(__location__,"DWD\mosmix stations cleaned.csv")
     mosmix_stations=pd.read_csv(path_mosmix,delimiter=";")
     nump_lat=mosmix_stations["nb."].values
     nump_lng=mosmix_stations["el."].values
@@ -61,12 +62,13 @@ def mosmix_forecast(address,weather_parameters,humanize=True):
     station_id=mosmix_stations.loc[nearest_station[1],"id"]
 
     #request weather forecast from Mosmix small station (MOSMIX_S (24x daily, 40 parameters, up to +240h)) 
+    Settings.tidy = False
+    Settings.humanize = humanize
+
     request = DwdMosmixRequest(
         parameter=weather_parameters,
         start_issue=DwdForecastDate.LATEST, 
         mosmix_type=DwdMosmixType.SMALL,
-        tidy=False,
-        humanize=humanize,
     )
     stations = request.filter_by_station_id(
         station_id,
