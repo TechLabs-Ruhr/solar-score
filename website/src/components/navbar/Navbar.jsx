@@ -24,10 +24,10 @@ const Navbar = () => {
           <Fragment>
             {' '}
             <div className="solarscore__navbar-sign">
-              <Link to='../views/auth/logout'>Logout</Link>
+              <Link to='/logout'>Logout</Link>
             </div>
             <div className="solarscore__navbar-sign">
-              <Link to='../views/dashboard'>
+              <Link to='/dashboard'>
               <button type="button"> Dashboard</button>
               </Link>
             </div>
@@ -36,10 +36,10 @@ const Navbar = () => {
           <Fragment>
             {' '}
             <div className="solarscore__navbar-sign">
-              <p><Link to='../views/auth/login'>Login</Link></p>
+              <p><Link to='/login'>Login</Link></p>
             </div>
             <div className="solarscore__navbar-sign">
-              <Link to='../views/auth/signup'>
+              <Link to='/signup'>
               <button type="button">Sign Up</button>
               </Link>
             </div>
