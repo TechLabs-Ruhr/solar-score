@@ -1,49 +1,53 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import logo from '../../assets/logo.svg';
 import './navbar.css';
-import {RiMenu3Line, RiCloseLine} from 'react-icons/ri';
-
-const Menu = () => (
-  <>
-  <p><a href="#home">Home</a></p>
-   <p><a href="#about">About the Project</a></p>
-   </>
-)
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect (() => {
+    if (localStorage.getItem('token') !== null)
+    {
+      setIsAuth(true);
+    }
+  }, []);
+
   return (
-  <div className="solarscore__navbar">
-  <div className="solarscore__navbar-links">
+    <nav>
+    <div className="solarscore__navbar">
+    <div className="solarscore__navbar-links">
       <div className="solarscore__navbar-links-logo">
       <img src ={logo} alt = "logo" />
       </div>
-        <div className="solarscore__navbar-links_container">
-      <Menu/>
+      {isAuth === true ? (
+          <Fragment>
+            {' '}
+            <div className="solarscore__navbar-sign">
+              <Link to='../views/auth/logout'>Logout</Link>
+            </div>
+            <div className="solarscore__navbar-sign">
+              <Link to='../views/dashboard'>
+              <button type="button"> Dashboard</button>
+              </Link>
+            </div>
+          </Fragment>
+        ) : (
+          <Fragment>
+            {' '}
+            <div className="solarscore__navbar-sign">
+              <p><Link to='../views/auth/login'>Login</Link></p>
+            </div>
+            <div className="solarscore__navbar-sign">
+              <Link to='../views/auth/signup'>
+              <button type="button">Sign Up</button>
+              </Link>
+            </div>
+          </Fragment>
+        )}
         </div>
-  </div>
-  <div className="solarscore__navbar-sign">
-    <p>Sign in</p>
-    <button type="button"> Sign Up</button>
-  </div>
-  <div className="solarscore__navbar-menu">
-    {toggleMenu
-      ? <RiCloseLine color="fff" size={27} onClick={()=> setToggleMenu(false)}/>
-      : <RiMenu3Line color="fff" size={27} onClick={()=> setToggleMenu(true)}/>
-    }
-    {toggleMenu &&(
-      <div className="solarscore__navbar-menu_container scale-up-center">
-        <div className="solarscore__navbar-menu_container-links">
-        <Menu/>
         </div>
-        <div className="solarscore__navbar-menu_container-links-sign">
-        <p>Sign in</p>
-         <button type="button"> Sign Up</button>
-         </div>
-        </div>
-       )}
-    </div>
-  </div>
+       </nav>
   ); 
 };
 

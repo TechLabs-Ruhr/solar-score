@@ -1,0 +1,22 @@
+.solarscore__about {
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+    background: var(--color-footer);
+
+    /* ff 3.6+ */
+    background:-moz-radial-gradient(circle at 6% 21%, rgba(36, 36, 36, 0.78) 1%, rgba(4, 12, 24, 0.91) 43%, rgba(4, 12, 24, 1) 74%);
+
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 6% 21%, rgba(36, 36, 36, 0.78) 1%, rgba(4, 12, 24, 0.91) 43%, rgba(4, 12, 24, 1) 74%);
+
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 6% 21%, rgba(36, 36, 36, 0.78) 1%, rgba(4, 12, 24, 0.91) 43%, rgba(4, 12, 24, 1) 74%);
+
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 6% 21%, rgba(36, 36, 36, 0.78) 1%, rgba(4, 12, 24, 0.91) 43%, rgba(4, 12, 24, 1) 74%);
+
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 6% 21%, rgba(36, 36, 36, 0.78) 1%, rgba(4, 12, 24, 0.91) 43%, rgba(4, 12, 24, 1) 74%);
+}
