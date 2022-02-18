@@ -12,12 +12,6 @@ const App = () => {
      <div className="gradient__bg">
      <Navbar />
      </div>
-     <Routes>
-          <Route path='/login' element={<Login/>} exact />
-          <Route path='/signup' element={<Signup/>} exact />
-          <Route path='/logout' element={<Logout/>} exact />
-          <Route path='/dashboard' element={<Dashboard/>} exact />
-        </Routes>
       </Router>
       <div className="solarscore__flexheader gradient__bg section__margin">
       <Header />
