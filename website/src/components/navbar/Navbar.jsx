@@ -3,6 +3,7 @@ import logo from '../../assets/logo.svg';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 
+
 const Navbar = () => {
   const [isAuth, setIsAuth] = useState(false);
 
@@ -14,9 +15,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav>
     <div className="solarscore__navbar">
-    <div className="solarscore__navbar-links">
       <div className="solarscore__navbar-links-logo">
       <img src ={logo} alt = "logo" />
       </div>
@@ -36,18 +35,17 @@ const Navbar = () => {
           <Fragment>
             {' '}
             <div className="solarscore__navbar-sign">
-              <p><Link to='/login'>Login</Link></p>
+              <p><a href="/login">Login</a></p>
             </div>
             <div className="solarscore__navbar-sign">
-              <Link to='/signup'>
+              <a href="/signup">
               <button type="button">Sign Up</button>
-              </Link>
+              </a>
             </div>
           </Fragment>
         )}
         </div>
-        </div>
-       </nav>
+        
   ); 
 };
 

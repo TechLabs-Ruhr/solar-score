@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -45,7 +46,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="solarscore__login solarscore__login-content">
       {loading === false && <h1>Login</h1>}
       {errors === true && <h2>Cannot log in with provided credentials</h2>}
       {loading === false && (

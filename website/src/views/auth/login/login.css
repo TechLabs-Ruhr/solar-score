@@ -1,0 +1,25 @@
+.solarscore__login{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    padding: 2rem;
+}
+
+.solarscore__login-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+   
+    margin-right: 5rem;
+}
+
+.solarscore__login-content h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 70px;
+    letter-spacing: -0.04em;
+}

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import './signup.css';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -49,12 +50,12 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      {loading === false && <h1>Signup</h1>}
+    <div className="solarscore__signup solarscore__signup-content">
+      {loading === false && <h1 className="gradient__text">Sign Up here</h1>}
       {errors === true && <h2>Cannot signup with provided credentials</h2>}
       <form onSubmit={onSubmit}>
-        <label htmlFor='email'>Email address:</label> <br />
-        <input
+        <label className="solarscore__label" htmlFor='email'>Email address:</label><br />
+        <input className="solarscore__signup-messagebox"
           name='email'
           type='email'
           value={email}
@@ -62,8 +63,8 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <label htmlFor='password1'>Password:</label> <br />
-        <input
+        <label className="solarscore__label" htmlFor='password1'>Password:</label> <br />
+        <input className="solarscore__signup-messagebox"
           name='password1'
           type='password'
           value={password1}
@@ -71,8 +72,8 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <label htmlFor='password2'>Confirm password:</label> <br />
-        <input
+        <label className="solarscore__label" htmlFor='password2'>Confirm password:</label> <br />
+        <input  className="solarscore__signup-messagebox"
           name='password2'
           type='password'
           value={password2}
@@ -80,7 +81,7 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <input type='submit' value='Signup' />
+        <input className="solarscore__signup-button" type='submit' value='Sign Up' />
       </form>
     </div>
   );
