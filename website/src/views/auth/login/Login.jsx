@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './login.css';
+import './login.css'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -47,12 +47,12 @@ const Login = () => {
 
   return (
     <div className="solarscore__login solarscore__login-content">
-      {loading === false && <h1>Login</h1>}
+      {loading === false && <h1 className="gradient__text">Login</h1>}
       {errors === true && <h2>Cannot log in with provided credentials</h2>}
       {loading === false && (
         <form onSubmit={onSubmit}>
-          <label htmlFor='email'>Email address:</label> <br />
-          <input
+          <label className="solarscore__label" htmlFor='email'>Email address:</label> <br />
+          <input className="solarscore__login-messagebox"
             name='email'
             type='email'
             value={email}
@@ -60,8 +60,8 @@ const Login = () => {
             onChange={e => setEmail(e.target.value)}
           />{' '}
           <br />
-          <label htmlFor='password'>Password:</label> <br />
-          <input
+          <label className="solarscore__label" htmlFor='password'>Password:</label> <br />
+          <input className="solarscore__login-messagebox"
             name='password'
             type='password'
             value={password}
@@ -69,7 +69,7 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />{' '}
           <br />
-          <input type='submit' value='Login' />
+          <input className="solarscore__login-button" type='submit' value='Login' />
         </form>
       )}
     </div>
