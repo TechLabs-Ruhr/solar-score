@@ -2,6 +2,7 @@ import React, {useState, useEffect, Fragment} from 'react';
 import logo from '../../assets/logo.svg';
 import './navbar.css';
 import { Link } from 'react-router-dom';
+import {Signup, Login, Logout, Dashboard} from '../../views/auth/index';
 
 
 const Navbar = () => {

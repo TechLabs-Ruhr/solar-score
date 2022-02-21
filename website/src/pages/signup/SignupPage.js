@@ -1,10 +1,10 @@
 import React from 'react';
-import {Signup} from '../../containers/index';
+import {Signup} from '../../../views/auth/index';
 import {CTA, Navbar} from '../../components';
-import './signup.css';
+import './signuppage.css';
 
 
-const Signup = () => {
+const SignupPage = () => {
   return (
     <div className="Signup">
      <div className="gradient__bg">
@@ -17,4 +17,4 @@ const Signup = () => {
   )
 };
 
-export default Signup;
+export default SignupPage;
