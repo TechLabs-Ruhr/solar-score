@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <div className="solarscore__navbar">
       <div className="solarscore__navbar-links-logo">
-      <img src ={logo} alt = "logo" />
+      <Link to='/'><img src ={logo} alt = "logo" /></Link>
       </div>
       {isAuth === true ? (
           <Fragment>
