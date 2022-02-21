@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './signup.css';
+import { Navbar } from '../../../components';
 
 const Signup = () => {
   const [email, setEmail] = useState('');

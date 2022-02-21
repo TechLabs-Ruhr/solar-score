@@ -2,7 +2,6 @@ import React, {useState, useEffect, Fragment} from 'react';
 import logo from '../../assets/logo.svg';
 import './navbar.css';
 import { Link } from 'react-router-dom';
-import {Signup, Login, Logout, Dashboard} from '../../views/auth/index';
 
 
 const Navbar = () => {
@@ -36,12 +35,12 @@ const Navbar = () => {
           <Fragment>
             {' '}
             <div className="solarscore__navbar-sign">
-              <p><a href="/login">Login</a></p>
+              <p><Link to="/login">Login</Link></p>
             </div>
             <div className="solarscore__navbar-sign">
-              <a href="/signup">
+              <Link to ="/signup">
               <button type="button">Sign Up</button>
-              </a>
+              </Link>
             </div>
           </Fragment>
         )}

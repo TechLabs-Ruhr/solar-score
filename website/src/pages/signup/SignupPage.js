@@ -1,5 +1,5 @@
 import React from 'react';
-import {Signup} from '../../../views/auth/index';
+import { Signup } from '../../views/auth';
 import {CTA, Navbar} from '../../components';
 import './signuppage.css';
 
