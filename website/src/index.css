@@ -4,10 +4,10 @@
 :root {
   --font-family: 'Manrope', sans-serif;
 
-  --gradient-text: linear-gradient(89.97deg, #faaf40 1.84%, #952ec5 102.67%);
-  --gradient-bar: linear-gradient(103.22deg, #faaf40 -13.86%, #F49867 99.55%);
+  --gradient-text: linear-gradient(89.97deg, #f39c1a 1.84%, #f39c1a 102.67%);
+  --gradient-bar: linear-gradient(103.22deg, #e49f38 -13.86%, #F49867 99.55%);
   
-  --color-bg: #040C18;
+  --color-bg: linear-gradient(89.97deg, #f39c1ad7 1.84%, #fdbe5ffb 102.67%);
   --color-footer : #031B34;
   --color-blog: #042c54;
   --color-text: #81AFDD;

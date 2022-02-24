@@ -39,22 +39,22 @@
     font-size: 20px;
     line-height: 40px;
     
-    color:aliceblue;
+    color:#0a1b3b;
     margin-top: 1.5rem;
 }
 
 .solarscore__login-button {
-    padding: 0.5rem 3rem;
+    padding: 1rem 3rem;
     color: #0a1b3b;
     font-family: var(--font-family);
     font-weight: 700;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 25px;
     background: #faaf40;
     border-radius: 5px;
     border: 0;
     outline: none;
-    margin: 10% 5%;
+    margin-top: 1rem;
     cursor: pointer;
 }
 
@@ -67,5 +67,6 @@
     float:left;
     box-sizing: border-box;
     border-radius: 5px;
+    background-color: #E8F0FE;
 
 }

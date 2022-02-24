@@ -2,14 +2,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 2rem 6rem;
+    padding: 1rem 6rem;
 }
 
 .solarscore__navbar-links-logo img {
     display: flex;
     justify-content: flex-start;
-    width: 160px;
-    height: 40px;
+    width: 250px;
+    height: 80px;
 }
 
 .solarscore__navbar-sign {
@@ -19,9 +19,9 @@
 }
 
 .solarscore__navbar-sign p {
-    color: #fff;
+    color: #0a1b3b;
     font-family: var(--font-family);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 18px;
     line-height: 25px;
     text-transform: capitalize;

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Footer, Possibility, Features, About, Header, Signin} from './containers';
-import {CTA, Navbar} from './components';
+import {Footer, Possibility, About, Header, Signin} from './containers';
+import {Navbar} from './components';
 import { Outlet, Link } from "react-router-dom";
 import './App.css';
 
@@ -16,8 +16,6 @@ const App = () => {
       <Signin />
       </div>
       <About />
-      <Features />
-      <CTA />
       <Footer />
   </div>
   )
