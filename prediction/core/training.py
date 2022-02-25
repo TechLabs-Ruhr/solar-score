@@ -1,67 +1,101 @@
 from tsai.all import *
 
-class frame_data:
-    """"""
-    def plot_frame(df):
-        """"""
-        y = frame_data.get_feature_names(df.shape[1]-3)
+class dataframe:
+    """Provides high level functionality for training on DataFrames."""
+    
+    def plot(df:pd.DataFrame):
+        """Plots input/output columns of given DataFrame."""
+        y = utility.get_feature_names(df.shape[1]-3)
         y.append('target')
         df.plot(x='time', y=y, grid=True);
 
-    def get_feature_names(num_features):
-        """"""
+    def train(df:pd.DataFrame):
+        """Performs preprocessing and training on given DataFrame. Returns the Learner."""
+        td = dataframe.get_train_data(df)
+        return td.train_on_batches()
+
+    def get_train_data(df:pd.DataFrame):
+        """Returns the training data object from given DataFrame."""
+        swp = sliding_window_parameter()
+        return swp.create_training_data(df)
+
+class utility:
+    """Provides helper functionality without context to other classes."""
+
+    def get_feature_names(num_features:int):
+        """Returns the indexed variable names as list."""
         vars = list()
         for f in range(num_features):
             vars.append(f'var{f+1}')
         return vars
 
-class batch_data:
-    """"""
+    def get_feature_count(df:pd.DataFrame):
+        """"""
+        return len(df.columns) - 3
+
+    def get_example_dataframe(num_features:int):
+        """"""
+        edp = example_data_parameter(num_features)
+        return edp.create_sample_dataframe()
+
+class train_data:
+    """Represents the final data layer before training."""
     X = None
     y = None
     splits = None
+    lrs = None
+    trained = False
+    learn = None
 
     def __init__(self, X, y, splits):
-        """"""
+        """Initializes empty object."""
         self.X = X
         self.y = y
         self.splits = splits
 
-    def train_on_batches(self, iterations=100):
-        """"""
+    def train_on_batches(self, autosave:bool=True, iterations:int=100):
+        """Performs training on optimal learning rate and returns Learner."""
         if self.check_if_ready is False:
             return
         dls = get_ts_dls(X=self.X, y=self.y, splits=self.splits)
-        cbs = [ShowGraph(), SaveModelCallback(monitor='valid_loss', comp=np.less, min_delta=0.01), EarlyStoppingCallback(monitor='valid_loss', comp=np.greater, min_delta=0.01, patience=10)]
-        learn = ts_learner(dls, InceptionTimePlus, cbs=cbs, loss_func=mae, metrics=[mae, mse])
-        lrs = learn.lr_find(suggest_funcs=(minimum, steep, valley, slide))
-        learn.fit_one_cycle(iterations, lr_max=lrs.valley)
-        return learn
+        cbs = [ShowGraph(), 
+            SaveModelCallback(monitor='valid_loss', comp=np.less, min_delta=0.001), 
+            EarlyStoppingCallback(monitor='valid_loss', comp=np.less, min_delta=0.001, patience=10)]
+        self.learn = ts_learner(dls, InceptionTimePlus, cbs=cbs, loss_func=mae, metrics=[mae, mse])
+        if self.lrs is None:
+            self.lrs = self.learn.lr_find(suggest_funcs=(minimum, steep, valley, slide))
+        self.learn.fit_one_cycle(iterations, lr_max=self.lrs.valley)
+        self.trained = True
+
+        if autosave:
+            self.learn.export(Path('models/core.pkl'))
+        return self.learn
     
     def plot_batches(self):
         """Plots the created batches."""
         if self.check_if_ready is False:
             return        
-        lim = 10
-        half_lim = int(lim/2)
-        num = self.X.shape[0]
-        feat = self.X.shape[1]
-        if num > lim:
+        num_limit = 10
+        half_lim = int(num_limit/2)
+        num_batches = self.X.shape[0]
+        num_features = self.X.shape[1]
+        if num_batches > num_limit:
             print(f"Too many batches. Display only the first and last {half_lim}.")
-            num = lim
-        fig, axs = subplots(1, num)
+            num_batches = num_limit
+        fig, axs = subplots(1, num_batches)
         for c,n in enumerate(range(half_lim)):
-            for f in range(feat):
+            for f in range(num_features):
                 axs[c].plot(self.X[n,f,:])#, 'tab:green')
             axs[c].plot(self.y[n])#, 'tab:red')
             axs[c].grid()
         for c,n in enumerate(range(int(self.X.shape[0]-half_lim-1), self.X.shape[0]-1)):
-            for f in range(feat):
+            for f in range(num_features):
                 axs[c + half_lim].plot(self.X[n,f,:])#, 'tab:green')
             axs[c + half_lim].plot(self.y[n])#, 'tab:red')
             axs[c + half_lim].grid()
 
     def check_if_ready(self):
+        """Checks whether or not the batches are ready for training."""
         if self.X is None:
             print("X was not yet initialized.")
             return False
@@ -75,20 +109,20 @@ class batch_data:
             return True
 
 class example_data_parameter:
-    """"""
-    num_weeks = 10
-    num_days_per_week = 7
+    """Stores parameter for creating example data."""
+    num_days = 0
     num_hours_per_day = 24
-    num_features = 2 # Implement!
+    num_features = 2
     time = None
 
-    def __init__(self, num_features=2):
+    def __init__(self, num_days:int, num_features:int=2):
         """Initialize new parameter object for synthetic data."""
+        self.num_days = num_days
         self.num_features = num_features
 
-    def create_sample_data(self, with_unique=False):
-        """Returns array with synthetic (sinusoidal) data."""
-        num_points = self.num_hours_per_day * self.num_days_per_week * self.num_weeks
+    def create_sample_data(self, with_unique:bool=False):
+        """Returns new array with synthetic data."""
+        num_points = self.num_hours_per_day * self.num_days
 
         data = np.zeros((num_points, self.num_features+2))
         self.time = np.linspace(1, num_points, num_points)
@@ -99,16 +133,16 @@ class example_data_parameter:
         else:
             data[:,0] = 1
         for f in range(self.num_features):          
-            data[:,f+1] = 2*np.sin(2*np.pi*self.time/self.num_days_per_week/self.num_hours_per_day + f)
+            data[:,f+1] = 2*np.sin(2*np.pi*self.time/self.num_hours_per_day + f)
             data[:,self.num_features+1] += data[:,f]
         data[:,self.num_features+1] += np.random.randint(-10,10,(num_points))/10
         return data
 
-    def create_sample_dataframe(self, with_unique=False):
-        """"""
+    def create_sample_dataframe(self, with_unique:bool=False):
+        """Returns new DataFrame with synthetic data."""
         data = self.create_sample_data(with_unique)
         columns = ['unique_id']
-        columns.extend(frame_data.get_feature_names(self.num_features))
+        columns.extend(utility.get_feature_names(self.num_features))
         columns.append('target')
         print(columns)
         frame = pd.DataFrame(data, columns=columns)
@@ -118,12 +152,12 @@ class example_data_parameter:
         return frame
 
 class sliding_window_parameter:
-    """"""
+    """Stores parameter for creating a sliding window operation."""
     add_padding_feature = False #1 Add an additional feature indicating whether each timestep is padded (1) or not (0).
     ascending = True #2 Used in sorting.
     check_leakage = True #3 Checks if there's leakage in the output between X and y
     copy=True #4 Copy the original object to avoid changes in it.
-    get_x = ['var1', 'var2'] #5 Indices of columns that contain the independent variable (xs). If None, all data will be used as x.
+    get_x = None #5 Indices of columns that contain the independent variable (xs). If None, all data will be used as x.
     get_y = ['target'] #6 Indices of columns that contain the target (ys). If None, all data will be used as y. [] means no y data is created (unlabeled data).
     horizon = 240 #7 Number of future datapoints to predict (y). If get_y == [] horizon will be set to 0.
     output_processor = None #8 (Optional) Function to process the final output (X (and y if available)). This is useful when some values need to be removed.
@@ -140,12 +174,14 @@ class sliding_window_parameter:
     window_len = 240 #19 Length of lookback.
     y_func = None #20 Optional function to calculate the ys based on the get_y col/s and each y sub-window. y_func must be a function applied to axis=1!.
 
-    def __init__(self, num_features=2):
-        """"""
-        self.get_x = frame_data.get_feature_names(num_features)
+    def __init__(self, num_features:int=2):
+        """Initializes new default parameter."""
+        self.get_x = utility.get_feature_names(num_features)
 
-    def create_training_batches(self, df):
-        """"""         
+    def create_training_data(self, df:pd.DataFrame):
+        """Performs sliding window operation on DataFrame and returns batch_data object."""         
+        self.get_x = utility.get_feature_names(utility.get_feature_count(df))
+        
         output = [df.groupby(['unique_id']).apply(lambda x: SlidingWindow(
             add_padding_feature=self.add_padding_feature,
             ascending=self.ascending,
@@ -173,4 +209,4 @@ class sliding_window_parameter:
         y = np.concatenate([oi[1] for oi in output])
         splits = get_splits(o=y, n_splits=1, valid_size=.2, shuffle=False)
 
-        return batch_data(X=X, y=y, splits=splits)
+        return train_data(X=X, y=y, splits=splits)
