@@ -3,11 +3,29 @@ from tsai.all import *
 class dataframe:
     """Provides high level functionality for training on DataFrames."""
     
-    def plot(df:pd.DataFrame):
+    def plot_all(df:pd.DataFrame, target_column:string=None):
         """Plots input/output columns of given DataFrame."""
-        y = utility.get_feature_names(df.shape[1]-3)
-        y.append('target')
-        df.plot(x='time', y=y, grid=True);
+        y = utility.get_column_names(df)
+
+        if target_column is None:
+            target_column = y[-1]
+
+        y.remove(target_column)
+
+        fig, [ax1,ax2] = plt.subplots(2, 1)
+        df.plot(x='Time', y=y, grid=True, ax=ax1);
+        df.plot(x='Time', y=target_column, ax = ax2);
+
+    def plot_batches(df:pd.DataFrame):
+        swp = sliding_window_parameter(num_features=4)
+        td = swp.create_training_data(df)
+        td.plot_batches()
+
+    def prepare(df:pd.DataFrame):
+        df = df.drop('Site', axis=1)
+        df['unique_id'] = np.ones((df.shape[0]))
+        df = df.fillna(0)
+        return df
 
     def train(df:pd.DataFrame):
         """Performs preprocessing and training on given DataFrame. Returns the Learner."""
@@ -28,6 +46,9 @@ class utility:
         for f in range(num_features):
             vars.append(f'var{f+1}')
         return vars
+
+    def get_column_names(df:pd.DataFrame):
+        return [element for element in list(df.columns) if element not in ['Site', 'Time', 'unique_id']]
 
     def get_feature_count(df:pd.DataFrame):
         """"""
@@ -147,8 +168,8 @@ class example_data_parameter:
         print(columns)
         frame = pd.DataFrame(data, columns=columns)
         frame = frame.reset_index()
-        frame.rename(columns={'index': 'time'}, inplace=True)
-        frame = frame.sort_values('time')
+        frame.rename(columns={'index': 'Time'}, inplace=True)
+        frame = frame.sort_values('Time')
         return frame
 
 class sliding_window_parameter:
@@ -166,7 +187,7 @@ class sliding_window_parameter:
     pad_remainder = False #11 Allows to pad remainder subsequences when the sliding window is applied and get_y == [] (unlabeled data).
     return_key = False #12 When True, the key corresponsing to unique_id_cols for each sample is returned
     seq_first = True #13 True if input shape (seq_len, n_vars), False if input shape (n_vars, seq_len).
-    sort_by = ['time'] #14 Column/s used for sorting the array in ascending order.
+    sort_by = ['Time'] #14 Column/s used for sorting the array in ascending order.
     start = 0 #15 Determines the step where the first window is applied. Default: 0. Previous steps will be discarded. 
     stride = 1 #16 Number of datapoints the window is moved ahead along the sequence. Default: 1. If None, stride=window_len (no overlap).
     unique_id_cols = []#['unique_id'] #17 pd.DataFrame columns that will be used to identify a time series for each entity.
@@ -178,10 +199,16 @@ class sliding_window_parameter:
         """Initializes new default parameter."""
         self.get_x = utility.get_feature_names(num_features)
 
-    def create_training_data(self, df:pd.DataFrame):
-        """Performs sliding window operation on DataFrame and returns batch_data object."""         
-        self.get_x = utility.get_feature_names(utility.get_feature_count(df))
+    def create_training_data(self, df:pd.DataFrame, target_column:string=None):
+        """Performs sliding window operation on DataFrame and returns train_data object."""         
+        self.get_x = utility.get_column_names(df)
         
+        if target_column is None:
+            target_column = self.get_x[-1]
+
+        self.get_x.remove(target_column)
+        self.get_y = [target_column]
+
         output = [df.groupby(['unique_id']).apply(lambda x: SlidingWindow(
             add_padding_feature=self.add_padding_feature,
             ascending=self.ascending,
