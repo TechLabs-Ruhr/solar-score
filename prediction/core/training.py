@@ -103,7 +103,7 @@ class train_data:
         if num_batches > num_limit:
             print(f"Too many batches. Display only the first and last {half_lim}.")
             num_batches = num_limit
-        fig, axs = subplots(1, num_batches)
+        fig, axs = subplots(1, num_batches, sharey=True)
         for c,n in enumerate(range(half_lim)):
             for f in range(num_features):
                 axs[c].plot(self.X[n,f,:])#, 'tab:green')
@@ -149,13 +149,13 @@ class example_data_parameter:
         self.time = np.linspace(1, num_points, num_points)
         
         if with_unique:
-            data[0::2,0] = 1
-            data[1::2,0] = 2
+            data[:int(num_points/2),0] = 1
+            data[int(num_points/2):,0] = 2
         else:
             data[:,0] = 1
         for f in range(self.num_features):          
             data[:,f+1] = 2*np.sin(2*np.pi*self.time/self.num_hours_per_day + f)
-            data[:,self.num_features+1] += data[:,f]
+            data[:,self.num_features+1] += data[:,f+1]
         data[:,self.num_features+1] += np.random.randint(-10,10,(num_points))/10
         return data
 
