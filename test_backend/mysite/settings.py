@@ -37,9 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd Party Apps
+    'users', # new
+    'rest_framework', # new
+    'rest_framework.authtoken', # new
+    'dj_rest_auth', # new
+    'django.contrib.sites', # new
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+    'dj_rest_auth.registration', # new
+    'corsheaders', # new# Local Apps
+    
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,3 +135,33 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# mysite/settings.py# Specifies localhost port 3000 where the React
+# server will be running is safe to receive requests
+# from. All all of this.
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+
+# Django All Auth config. Add all of this.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = (
+"django.contrib.auth.backends.ModelBackend",
+"allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+
+# Rest Framework config. Add all of this.
+REST_FRAMEWORK = {    
+'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
+'DEFAULT_AUTHENTICATION_CLASSES': [        
+'rest_framework.authentication.TokenAuthentication',    
+],
+}
