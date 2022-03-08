@@ -12,9 +12,10 @@ class dataframe:
 
         y.remove(target_column)
 
-        fig, [ax1,ax2] = plt.subplots(2, 1)
-        df.plot(x='Time', y=y, grid=True, ax=ax1);
-        df.plot(x='Time', y=target_column, ax = ax2);
+        fig, [ax1,ax2,ax3] = plt.subplots(3, 1)
+        df.plot(x='Time', y='unique_id', grid=True, ax=ax1);
+        df.plot(x='Time', y=y, grid=True, ax=ax2);
+        df.plot(x='Time', y=target_column, ax = ax3);
 
     def plot_batches(df:pd.DataFrame):
         swp = sliding_window_parameter(num_features=4)
@@ -48,7 +49,7 @@ class utility:
         return vars
 
     def get_column_names(df:pd.DataFrame):
-        return [element for element in list(df.columns) if element not in ['Site', 'Time', 'unique_id']]
+        return [element for element in list(df.columns) if element not in ['level_0', 'index', 'Site', 'Time', 'unique_id']]
 
     def get_feature_count(df:pd.DataFrame):
         """"""
