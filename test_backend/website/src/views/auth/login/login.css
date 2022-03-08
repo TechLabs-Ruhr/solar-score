@@ -1,0 +1,72 @@
+.solarscore__login {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    padding: 2rem;
+}
+
+.solarscore__login-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+   
+    margin-right: 5rem;
+}
+
+
+.solarscore__login-content h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 70px;
+    letter-spacing: -0.04em;
+}
+
+.solarscore__login-content h2 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+}
+
+.solarscore__label {
+    font-family: var(--font-family);
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 40px;
+    
+    color:#0a1b3b;
+    margin-top: 1.5rem;
+}
+
+.solarscore__login-button {
+    padding: 1rem 3rem;
+    color: #0a1b3b;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    background: #faaf40;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.solarscore__login-messagebox {
+    border: 0; 
+    padding: 10px; 
+    width: 200%;
+    height:15%;
+    margin:0;
+    float:left;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #E8F0FE;
+
+}
