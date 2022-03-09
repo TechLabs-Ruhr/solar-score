@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration', # new
     'corsheaders', # new# Local Apps
     'website',
-    'templates', 
+    #'templates', 
     'static'
     
 
