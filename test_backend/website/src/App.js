@@ -4,7 +4,6 @@ import {Navbar} from './components';
 import { Outlet, Link } from "react-router-dom";
 import './App.css';
 
-
 const App = () => {
   return (
     <div className="App">
@@ -19,7 +18,7 @@ const App = () => {
       <Footer />
   </div>
   )
-};
-
+}; 
 export default App;
+
 

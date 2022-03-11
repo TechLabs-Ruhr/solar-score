@@ -83,7 +83,10 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <input className="solarscore__signup-button" type='submit' value='Sign Up' />
+        <div ><Link to ="/signup1">
+              <button className="solarscore__signup-button" type="button">Sign Up</button>
+              </Link>
+            </div>
       </form>
     </div>
   );
