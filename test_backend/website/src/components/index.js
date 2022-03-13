@@ -1,6 +1,5 @@
-export { default as Article } from './article/Article';
-export { default as CTA } from './cta/CTA';
-export { default as Feature } from './feature/Feature';
-export { default as Navbar } from './navbar/Navbar';
 
+export { default as Navbar } from './navbar/Navbar';
+export { default as Test } from './test/Test';
+export { default as Test2 } from './test2/Test2';
  
