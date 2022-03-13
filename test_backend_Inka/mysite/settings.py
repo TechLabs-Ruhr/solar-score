@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount', # new
     'dj_rest_auth.registration', # new
     'corsheaders', # new# Local Apps
-    
-
+    'website',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +129,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIR=[os.path.join(BASE_DIR,'website','build','static')]
 
 # Default primary key field type
