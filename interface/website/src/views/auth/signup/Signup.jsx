@@ -1,8 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import './signup.css';
-import { Navbar } from '../../../components';
-import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -83,10 +81,7 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <div ><Link to ="/signup1">
-              <button className="solarscore__signup-button" type="button">Sign Up</button>
-              </Link>
-            </div>
+        <input className="solarscore__signup-button" type='submit' value='Signup' />
       </form>
     </div>
   );
@@ -94,4 +89,4 @@ const Signup = () => {
 
 export default Signup;
 
-//<input className="solarscore__signup-button" type='submit' value='Sign Up' <Link to='/logout'>Logout</Link> 
+//<input className="solarscore__signup-button" type='submit' value='Signup' <Link to='/logout'>Logout</Link> 

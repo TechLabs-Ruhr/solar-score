@@ -1,9 +1,7 @@
 import React from 'react';
-import {Footer, Possibility, About, Header, Signin} from './containers';
-import {Navbar} from './components';
-import { Outlet, Link } from "react-router-dom";
+import {Footer, Header, Signin} from './containers';
+import {Navbar, Test, Test2} from './components';
 import './App.css';
-
 
 const App = () => {
   return (
@@ -15,11 +13,12 @@ const App = () => {
       <Header />
       <Signin />
       </div>
-      <About />
+      <Test />
+      <Test2 />
       <Footer />
   </div>
   )
-};
-
+}; 
 export default App;
+
 
