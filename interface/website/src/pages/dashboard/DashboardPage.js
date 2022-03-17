@@ -1,20 +1,19 @@
 import React from 'react';
-import { Login } from '../../views/auth';
+import Dashboard from '../../views/dashboard/Dashboard';
 import { Navbar} from '../../components';
-import './loginpage.css';
+import './dashboardpage.css';
 
-
-const LoginPage = () => {
+const DashboardPage = () => {
   return (
-    <div className="Login">
+    <div className="Dashboard">
      <div className="gradient__bg">
      <Navbar />
      </div>
       <div className="solarscore__flexheader gradient__bg section__margin">
-      <Login/>
+      <Dashboard/>
       </div>
   </div>
   )
 };
 
-export default LoginPage;
+export default DashboardPage;

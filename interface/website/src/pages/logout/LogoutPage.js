@@ -1,20 +1,20 @@
 import React from 'react';
-import { Signup } from '../../views/auth';
+import  Logout from '../../views/auth/logout/Logout';
 import {CTA, Navbar} from '../../components';
-import './signuppage.css';
+import './logoutpage.css';
 
 
-const SignupPageOne = () => {
+const LogoutPage = () => {
   return (
-    <div className="Signup">
+    <div className="Logout">
      <div className="gradient__bg">
      <Navbar />
      </div>
       <div className="solarscore__flexheader gradient__bg section__margin">
-      <h1>Signup Step 1 </h1>
+      <Logout/>
       </div>
   </div>
   )
 };
 
-export default SignupPageOne;
+export default LogoutPage;
