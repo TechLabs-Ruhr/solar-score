@@ -3,12 +3,6 @@ import {Footer, Header, Signin} from './containers';
 import {Navbar, Test, Test2} from './components';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './views/auth/login/Login';
-import Signup from './views/auth/signup/Signup';
-import Logout from './views/auth/logout/Logout';
-import Dashboard from './views/dashboard/Dashboard';
-
 const App = () => {
   return (
     <div className="App">
@@ -22,15 +16,6 @@ const App = () => {
       <Test />
       <Test2 />
       <Footer />
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/login' component={Login} exact />
-          <Route path='/signup' component={Signup} exact />
-          <Route path='/logout' component={Logout} exact />
-          <Route path='/dashboard' component={Dashboard} exact />
-        </Routes>
-      </Router>
 
   </div>
   )
