@@ -8,4 +8,3 @@ df_weather=mosmix_forecast(address,["Rad1h"],humanize=False)
 df_weather.plot(x="date",y="value")
 
 print(df_weather)
-
