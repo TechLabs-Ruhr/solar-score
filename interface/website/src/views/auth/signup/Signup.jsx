@@ -52,7 +52,7 @@ const Signup = () => {
   return (
     <div className="solarscore__signup solarscore__signup-content">
       {loading === false && <h1 className="gradient__text">Sign Up here</h1>}
-      {errors === true && <h2>Cannot signup with provided credentials</h2>}
+      {errors === true && <h2>Make sure you use a valid e-mail address and a password with more than 8 characters.</h2>}
       <form onSubmit={onSubmit}>
         <label className="solarscore__label" htmlFor='email'>Email address:</label><br />
         <input className="solarscore__signup-messagebox"

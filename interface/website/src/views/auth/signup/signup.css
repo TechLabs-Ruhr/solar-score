@@ -27,10 +27,11 @@
 
 .solarscore__signup-content h2 {
     font-family: var(--font-family);
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 27px;
-    letter-spacing: -0.04em;
+    font-weight: 400;
+    font-size: 20px;
+    color: rgb(197, 17, 17);
+    line-height: 50px;
+    letter-spacing: 0.0em;
 }
 
 .solarscore__label {

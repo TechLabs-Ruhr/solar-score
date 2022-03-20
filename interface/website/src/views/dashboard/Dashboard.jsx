@@ -28,8 +28,10 @@ const Dashboard = () => {
     <div>
       {loading === false && (
         <Fragment>
+          <div className="solarscore__dashboard-content">
           <h1>Dashboard</h1>
           <h2>Hello {userEmail}!</h2>
+          </div>
         </Fragment>
       )}
     </div>
