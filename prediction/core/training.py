@@ -2,7 +2,7 @@ from tsai.all import *
 
 class dataframe:
     """Provides high level functionality for training on DataFrames."""
-    
+
     def plot_all(df:pd.DataFrame, target_column:string=None):
         """Plots input/output columns of given DataFrame."""
         y = utility.get_column_names(df)
@@ -18,11 +18,13 @@ class dataframe:
         df.plot(x='Time', y=target_column, ax = ax3);
 
     def plot_batches(df:pd.DataFrame):
+        """"""
         swp = sliding_window_parameter(num_features=4)
         td = swp.create_training_data(df)
         td.plot_batches()
 
     def prepare(df:pd.DataFrame):
+        """"""
         df = df.drop('Site', axis=1)
         df['unique_id'] = np.ones((df.shape[0]))
         df = df.fillna(0)
@@ -37,6 +39,24 @@ class dataframe:
         """Returns the training data object from given DataFrame."""
         swp = sliding_window_parameter()
         return swp.create_training_data(df)
+
+    def get_time_delta(df:pd.DataFrame, id:int=-1):
+        """"""
+
+        if id not in df['unique_id'].unique():
+            print(f'ID {id} not in DataFrame.')
+            return
+        format = '%Y-%m-%d %H:%M:%S'
+        if id == -1:
+            sub = df.copy()
+        else:
+            sub = df[df['unique_id'] == id]
+
+        time_start = datetime.strptime(sub['Time'].iloc[0], format)
+        time_end = datetime.strptime(sub['Time'].iloc[-1], format)
+        time_delta = time_end-time_start
+        print(f'{id}     {time_delta}')
+        return time_delta
 
 class utility:
     """Provides helper functionality without context to other classes."""
@@ -227,7 +247,6 @@ class sliding_window_parameter:
             sort_by=self.sort_by,
             start=self.start,
             stride=self.stride,
-            #unique_id_cols=unique_id_cols, {unexpected keyword}
             #verbose=verbose, {unexpected keyword}
             window_len=self.window_len,
             y_func=self.y_func,
@@ -235,6 +254,6 @@ class sliding_window_parameter:
 
         X = np.concatenate([oi[0] for oi in output])
         y = np.concatenate([oi[1] for oi in output])
-        splits = get_splits(o=y, n_splits=1, valid_size=.2, shuffle=False)
+        splits = get_splits(o=y, n_splits=1, valid_size=.2, shuffle=True, stratify=False)
 
         return train_data(X=X, y=y, splits=splits)

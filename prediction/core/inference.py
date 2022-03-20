@@ -30,6 +30,9 @@ class dataframe:
 
     def validate(df:pd.DataFrame):
         """"""
+        if len(df.index) < 240:
+            print("DataFrame needs to have exactly 240 steps/rows.")
+            return
         df = df.iloc[-240:]
         id = dataframe.predict(df)
         preds = np.array(id.preds[0])

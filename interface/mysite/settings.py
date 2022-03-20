@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd Party Apps
+    'clients',
     'users', # new
     'rest_framework', # new
     'rest_framework.authtoken', # new
@@ -165,6 +166,10 @@ ACCOUNT_UNIQUE_EMAIL = True
 REST_FRAMEWORK = {    
 'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
 'DEFAULT_AUTHENTICATION_CLASSES': [        
-'rest_framework.authentication.TokenAuthentication',    
-],
+    'rest_framework.authentication.TokenAuthentication',    
+    ],
+'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+    ],
 }
