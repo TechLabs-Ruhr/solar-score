@@ -4,15 +4,24 @@ import requests
 import json
 import wetterdienst as wetterdienst
 from dotenv import load_dotenv
+from pathlib import Path
 from wetterdienst.provider.dwd.mosmix import DwdForecastDate, DwdMosmixRequest, DwdMosmixType
 from wetterdienst import Settings
 
 
-def get_dataframe():
+def get_forecast_dataframe(address:str=None):
     """Fetches the newest weather forecast and prepares the data for usage in calculation pipeline."""
+    df = mosmix_forecast(address=address)
+    df = clean_dataframe(df)
+    return df
 
-def clean_dataframe():
+def clean_dataframe(df:pd.DataFrame):
     """Prepares DataFrame for usage in calculation pipeline."""
+    nw = pd.DataFrame()
+    for parameter in df['parameter'].unique().tolist():
+        nw[parameter] = df.loc[df.parameter == parameter, "value"].to_numpy()
+
+    return nw
 
 def get_long_lat(address):
     """
@@ -46,7 +55,7 @@ def get_long_lat(address):
 
     return dict_geo
 
-def mosmix_forecast(address, weather_parameters, humanize=True):
+def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:bool=True):
     """
     Gives back a df with the weather forecast for the nearest weather station to a chosen address.
         Parameters:
@@ -56,6 +65,12 @@ def mosmix_forecast(address, weather_parameters, humanize=True):
         Returns:
             df_weather_forecast: df with weather forecast for chosen parameters
     """
+
+    if address is None:
+        address = "Auf der Reihe 2, 45884 Gelsenkirchen, Germany"
+
+    if weather_parameters is None:
+        weather_parameters = ["Rad1h", "TTT", "FF"]
 
     # latitude and longitude value from mapquest in decimal degree
     lnglat = get_long_lat(address)
@@ -86,7 +101,7 @@ def mosmix_forecast(address, weather_parameters, humanize=True):
     lng_min = decdeg2dms(lng)
 
     # get nearest weather station
-    path_mosmix = "mosmix stations cleaned.csv"
+    path_mosmix = Path(__file__).parent / "mosmix stations cleaned.csv"
     mosmix_stations = pd.read_csv(path_mosmix, delimiter=";")
     nump_lat = mosmix_stations["nb."].values
     nump_lng = mosmix_stations["el."].values

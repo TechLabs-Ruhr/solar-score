@@ -1,0 +1,4 @@
+;Weather Parameter;Short Name;Unit
+0;Temperature 2m above surface;TTT;K
+5;Wind speed;FF;m/s
+26;Global Irradiance;Rad1h;kJ/m2
