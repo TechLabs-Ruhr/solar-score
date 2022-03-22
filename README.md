@@ -13,9 +13,9 @@ In times of rising energy prices and the danger of cilmate change we want to ach
 
 In order to setup the project, please proceed as follows:
 
-## set up maprequest
+## MapQuest API-key
 
-with the help of maprequest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file.
+with the help of MapQuest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file.
 
 
 ## frontend
