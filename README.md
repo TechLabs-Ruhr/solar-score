@@ -13,12 +13,12 @@ Description: In times of rising energy prices and the danger of cilmate change w
 
 In order to setup the project, please proceed as follows:
 
-# set up maprequest
+## set up maprequest
 
-with the help of maprequest 
+with the help of maprequest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file.
 
 
-# frontend
+## frontend
  
 install node.js and run the following commands from the website folder:
 
@@ -33,25 +33,19 @@ install node.js and run the following commands from the website folder:
 ```bash
   npm start
 ```
-# backend
+## backend
 
 run the following commands from the interface folder:
 
 ```bash
-  npm manage.py make
-```
-
-```bash
-  npm manage.py migrate --run-syncdb
+  npm manage.py makemigrations
 ```
 ```bash
   npm manage.py migrate --run-syncdb
 ```
 ```bash
-  npm manage.py migrate --run-syncdb
+  npm manage.py runserver
 ```
-
-
 ## Examples
 
 You can see a brief overview of how to use the main functionality below
