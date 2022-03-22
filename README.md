@@ -15,7 +15,14 @@ In order to setup the project, please proceed as follows:
 
 ## MapQuest API-key
 
-with the help of MapQuest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file.
+create a new environment with the environment.yml in the root folder
+
+
+## MapQuest API-key
+
+with the help of MapQuest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file:
+
+'api_key'="that_is_an_api_key'
 
 
 ## frontend
