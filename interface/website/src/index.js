@@ -15,7 +15,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <BrowserRouter>
   <Routes>
-    <Route path="" element={<App />} />
+    <Route path="/" element={<App />} />
     <Route path="login" element={<LoginPage />} />
     <Route path="signup" element={<SignupPage />} />
     <Route path="dashboard" element={<DashboardPage />} />
