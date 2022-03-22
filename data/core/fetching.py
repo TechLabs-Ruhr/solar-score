@@ -9,13 +9,13 @@ from wetterdienst.provider.dwd.mosmix import DwdForecastDate, DwdMosmixRequest, 
 from wetterdienst import Settings
 
 
-def get_forecast_dataframe(address:str=None):
+def get_forecast_dataframe(address:str=None) -> pd.DataFrame:
     """Fetches the newest weather forecast and prepares the data for usage in calculation pipeline."""
     df = mosmix_forecast(address=address)
     df = clean_dataframe(df)
     return df
 
-def clean_dataframe(df:pd.DataFrame):
+def clean_dataframe(df:pd.DataFrame) -> pd.DataFrame:
     """Prepares DataFrame for usage in calculation pipeline."""
     nw = pd.DataFrame()
     for parameter in df['parameter'].unique().tolist():
@@ -23,7 +23,7 @@ def clean_dataframe(df:pd.DataFrame):
 
     return nw
 
-def get_long_lat(address):
+def get_long_lat(address) -> dict:
     """
     Gives back dict with latitude and longitude value of an adress. Request made via mapquest.
 
@@ -55,7 +55,7 @@ def get_long_lat(address):
 
     return dict_geo
 
-def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:bool=True):
+def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:bool=True) -> pd.DataFrame:
     """
     Gives back a df with the weather forecast for the nearest weather station to a chosen address.
         Parameters:
@@ -129,4 +129,4 @@ def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:boo
           column = 'station_name',
           value = station_name)
 
-    return(df_weather_forecast)
+    return df_weather_forecast

@@ -1,5 +1,8 @@
 from tsai.all import *
-from core import training
+
+def get_prediction_dataframe(df:pd.DataFrame) -> pd.DataFrame:
+    """"""
+    return None
 
 class dataframe:
     """Provides high level functionality for inference with DataFrames."""
@@ -8,7 +11,7 @@ class dataframe:
         """Creates a new forecast based on given DataFrame."""
         learn = load_learner(model)
         
-        source_column = training.utility.get_column_names(df)
+        source_column = utility.get_column_names(df)
         if target_column is None:
             target_column = source_column[-1]
         
@@ -42,6 +45,9 @@ class dataframe:
         plt.plot(id.y[0]);
         plt.plot(preds);
 
+class utility:
+    def get_column_names(df:pd.DataFrame):
+        return [element for element in list(df.columns) if element not in ['level_0', 'index', 'Site', 'Time', 'unique_id']]
 
 class infer_data:
     """"""

@@ -1,0 +1,3 @@
+import manage
+
+manage.runpipeline()
