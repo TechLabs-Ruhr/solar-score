@@ -1,10 +1,3 @@
-## TODO for the Techies
-Please **fill out the following information below**, as soon as possible. It is **required** to have this file completely filled out and up to date at the end of the project phase.
-You can of course use this file to manage your project, e.g. as a place to keep your todos and to plan your features. Also, feel free to edit this readme in any kind of way you like, but the required base layout and information should be consistent throughout all techie projects.
-
-**Hint:** The following file is written in `markdown` which is a language to format text with simple characters. If you are unsure on how to use markdown then have a look at [this guide](https://www.markdownguide.org/basic-syntax/)
-
-By the end you should have filled out the following:
 1. **Project Title:** The title of the project, including a description which states the motivation/problem of the project and the developed solution.
 2. **How to Setup and Run:** The respective commands to install and run the project
 3. **Examples:** A brief overview on how to use the main functionalities of your project (does not have to be code)
@@ -12,24 +5,53 @@ By the end you should have filled out the following:
 5. **Authors:** Please add all of you and link your respective GitHub profile and other information if you want to. This part if completely up to you.
 6. If you are done filling out the information below, please **delete this TODO Section** to keep your project readme clean for other people to get to know more about your project.
 
-# Solar Score
+# SolarScore
 
-Description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-
+Description: In times of rising energy prices and the danger of cilmate change we want to achieve that solar plant owners get the most out of their solar plant.Based on the weather forecast for the next days SolarScore predicts the solar plant's power output so that the owner can plan when to for example charge her/his electric vehicle and it is avoided that energy is not used directly. 
 
 ## How to Setup and Run
 
 In order to setup the project, please proceed as follows:
 
+# set up maprequest
+
+with the help of maprequest 
+
+
+# frontend
+ 
+install node.js and run the following commands from the website folder:
+
 ```bash
-  npm install my-project
+  npm install
 ```
 
-After successful installation use the following command to run the project:
+```bash
+  npm run build
+```
 
 ```bash
-  npm run
+  npm start
 ```
+# backend
+
+run the following commands from the interface folder:
+
+```bash
+  npm manage.py make
+```
+
+```bash
+  npm manage.py migrate --run-syncdb
+```
+```bash
+  npm manage.py migrate --run-syncdb
+```
+```bash
+  npm manage.py migrate --run-syncdb
+```
+
+
 ## Examples
 
 You can see a brief overview of how to use the main functionality below
