@@ -56,6 +56,3 @@ function App() {
 - [@Inka](https://github.com/JuaKaliKubwa)
 - [@Marian](https://github.com/Kallonaut)
 - [@Denise](https://github.com/DeniseGrunert)
-- [@My](https://github.com/tramyynt)
-
-
