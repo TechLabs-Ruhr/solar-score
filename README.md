@@ -1,3 +1,9 @@
+## SolarScore
+
+Use `python -m fire manage.py <function>` to start a function from the terminal.
+
+
+
 ## TODO for the Techies
 Please **fill out the following information below**, as soon as possible. It is **required** to have this file completely filled out and up to date at the end of the project phase.
 You can of course use this file to manage your project, e.g. as a place to keep your todos and to plan your features. Also, feel free to edit this readme in any kind of way you like, but the required base layout and information should be consistent throughout all techie projects.
