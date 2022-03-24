@@ -10,24 +10,19 @@
 In times of rising energy prices and the danger of cilmate change we want to achieve that solar plant owners get the most out of their solar plant.Based on the weather forecast for the next days SolarScore predicts the solar plant's power output so that the owner can plan when to for example charge her/his electric vehicle and it is avoided that energy is not used directly. 
 
 ## How to Setup and Run
-
 In order to setup the project, please proceed as follows:
 
 ## MapQuest API-key
-
-create a new environment with the environment.yml in the root folder
+Create a new environment with the environment.yml in the root folder
 
 
 ## MapQuest API-key
-
-with the help of MapQuest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file:
+With the help of MapQuest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file:
 
 'api_key'="that_is_an_api_key'
 
-
-## frontend
- 
-install node.js and run the following commands from the website folder:
+## Frontend
+Install node.js and run the following commands from the website folder:
 
 ```bash
   npm install
@@ -40,9 +35,9 @@ install node.js and run the following commands from the website folder:
 ```bash
   npm start
 ```
-## backend
 
-run the following commands from the interface folder:
+## Backend
+Run the following commands from the interface folder:
 
 ```bash
   npm manage.py makemigrations
@@ -53,8 +48,25 @@ run the following commands from the interface folder:
 ```bash
   npm manage.py runserver
 ```
-## Examples
 
+## Pipeline
+To test the calculation pipeline you can use following commands from the top level folder:
+```bash
+python -m fire manage.py testfetching
+```
+```bash
+python -m fire manage.py testinferencing
+```
+```bash
+python -m fire manage.py testdrawing
+```
+The complete routine is started via
+```bash
+python -m fire manage.py runpipeline
+```
+While using it in a terminal it assumes default values for `address` and `p_max` input values.
+
+## Examples
 You can see a brief overview of how to use the main functionality below
 
 ```javascript
@@ -67,9 +79,9 @@ function App() {
 
   
 ## Roadmap
-
-- Additional browser support
-- Add more integrations
+- Optimize model predictions by further learning
+- Feedback loop for user data (Import)
+- Export of forecast data
 
   
 ## Authors
