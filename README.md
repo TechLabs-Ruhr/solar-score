@@ -7,22 +7,24 @@
 
 # SolarScore
 
-In times of rising energy prices and the danger of cilmate change we want to achieve that solar plant owners get the most out of their solar plant.Based on the weather forecast for the next days SolarScore predicts the solar plant's power output so that the owner can plan when to for example charge her/his electric vehicle and it is avoided that energy is not used directly. 
+In times of rising energy prices and the danger of climate change we want to achieve that solar plant owners get the most out of their solar plant.Based on the weather forecast for the next days SolarScore predicts the solar plant's power output so that the owner can plan when to for example charge her/his electric vehicle and it is avoided that energy is not used directly. 
 
 ## How to Setup and Run
 In order to setup the project, please proceed as follows:
 
-## MapQuest API-key
-Create a new environment with the environment.yml in the root folder
+### MapQuest API-key
+Create a new environment with the `environment.yml` in the root folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
 
 
-## MapQuest API-key
-With the help of MapQuest the coordinates are requested for a specific adress.Please register at https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register and copy your personal API key in an .env file:
+### MapQuest API-key
+With the help of MapQuest the coordinates are requested for a specific adress.Please register at their [webpage]( https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register) and copy your personal API key in an `.env` file:
 
-'api_key'="that_is_an_api_key'
+```shell
+api_key = <that_is_an_api_key>
+```
 
-## Frontend
-Install node.js and run the following commands from the website folder:
+### Frontend
+Install [node.js](https://nodejs.org/en/download/) and run the following commands from the `website` folder:
 
 ```bash
   npm install
@@ -36,8 +38,8 @@ Install node.js and run the following commands from the website folder:
   npm start
 ```
 
-## Backend
-Run the following commands from the interface folder:
+### Backend
+Run the following commands from the `interface` folder:
 
 ```bash
   npm manage.py makemigrations
@@ -49,7 +51,7 @@ Run the following commands from the interface folder:
   npm manage.py runserver
 ```
 
-## Pipeline
+### Pipeline
 To test the calculation pipeline you can use following commands from the top level folder:
 ```bash
 python -m fire manage.py testfetching
