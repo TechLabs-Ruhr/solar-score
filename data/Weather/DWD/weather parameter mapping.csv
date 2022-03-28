@@ -1,4 +1,5 @@
 ;Weather Parameter DWD;Short Name DWD;Unit DWD;Weather Parameter Training
-0;Temperature 2m above surface;TTT;K;DewPt [K]
+0;Temperature 2m above surface;TTT;K;TempOut [K]
+1;Dewpoint 2m above surface;Td;K;DewPt [K]
 5;Wind speed;FF;m/s;WindSpeed [m/s]
 26;Global Irradiance;Rad1h;kJ/m2;SolarRad [kJ/m²]

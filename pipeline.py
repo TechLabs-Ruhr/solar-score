@@ -1,3 +1,6 @@
-import manage
+import pandas as pd
+from data.core import fetching, drawing
+from prediction.core import inferencing
 
-manage.runpipeline()
+df = fetching.get_forecast_dataframe()
+print(inferencing.dataframe.predict(df).preds)

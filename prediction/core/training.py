@@ -3,14 +3,9 @@ from tsai.all import *
 class dataframe:
     """Provides high level functionality for training on DataFrames."""
 
-    def plot_all(df:pd.DataFrame, target_column:string=None):
+    def plot_all(df:pd.DataFrame, target_column:string='P_gen [kW]'):
         """Plots input/output columns of given DataFrame."""
-        y = utility.get_column_names(df)
-
-        if target_column is None:
-            target_column = y[-1]
-
-        y.remove(target_column)
+        y = utility.get_column_dict().values()
 
         fig, [ax1,ax2,ax3] = plt.subplots(3, 1)
         df.plot(x='Time', y='unique_id', grid=True, ax=ax1);
@@ -19,11 +14,11 @@ class dataframe:
 
     def plot_batches(df:pd.DataFrame):
         """"""
-        swp = sliding_window_parameter(num_features=4)
-        td = swp.create_training_data(df)
+        swp = sliding_window_parameter(num_features=len(utility.get_column_dict().values()))
+        td = swp.create_training_data(df, 'P_gen [kW]')
         td.plot_batches()
 
-    def prepare(df:pd.DataFrame):
+    def prepare(df:pd.DataFrame) -> pd.DataFrame:
         """"""
         df = df.drop('Site', axis=1)
         df['unique_id'] = np.ones((df.shape[0]))
@@ -68,8 +63,10 @@ class utility:
             vars.append(f'var{f+1}')
         return vars
 
-    def get_column_names(df:pd.DataFrame):
-        return [element for element in list(df.columns) if element not in ['level_0', 'index', 'Site', 'Time', 'unique_id']]
+    def get_column_dict(filename:str="weather parameter mapping.pkl") -> dict:
+        with open(Path(__file__).parent / filename, 'rb') as f:
+            mapping:dict = pickle.load(f)
+        return mapping
 
     def get_feature_count(df:pd.DataFrame):
         """"""
@@ -220,14 +217,9 @@ class sliding_window_parameter:
         """Initializes new default parameter."""
         self.get_x = utility.get_feature_names(num_features)
 
-    def create_training_data(self, df:pd.DataFrame, target_column:string=None):
+    def create_training_data(self, df:pd.DataFrame, target_column:string='P_gen [kW]'):
         """Performs sliding window operation on DataFrame and returns train_data object."""         
-        self.get_x = utility.get_column_names(df)
-        
-        if target_column is None:
-            target_column = self.get_x[-1]
-
-        self.get_x.remove(target_column)
+        self.get_x = list(utility.get_column_dict().values())
         self.get_y = [target_column]
 
         output = [df.groupby(['unique_id']).apply(lambda x: SlidingWindow(

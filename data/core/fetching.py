@@ -1,8 +1,11 @@
+from fileinput import filename
 import os
 import pandas as pd
+import numpy as np
 import requests
 import json
 import wetterdienst as wetterdienst
+import pickle
 from dotenv import load_dotenv
 from pathlib import Path
 from wetterdienst.provider.dwd.mosmix import DwdForecastDate, DwdMosmixRequest, DwdMosmixType
@@ -13,49 +16,45 @@ def get_forecast_dataframe(address:str=None) -> pd.DataFrame:
     """Fetches the newest weather forecast and prepares the data for usage in calculation pipeline."""
     df = mosmix_forecast(address=address)
     df = clean_dataframe(df)
+    df = rename_columns(df)
+    return df
+
+def get_test_dataframe() -> pd.DataFrame:
+    """Creates random data for testing other pipeline components."""
+    parameters = list(utility.get_column_dict().values())
+    print(parameters)
+    df = pd.DataFrame(columns=parameters)
+    df['Date'] = np.linspace(1, 240, 240)
+    for parameter in parameters:
+        df[parameter] = np.random.random((240))
     return df
 
 def clean_dataframe(df:pd.DataFrame) -> pd.DataFrame:
     """Prepares DataFrame for usage in calculation pipeline."""
+    if 'parameter' not in df:
+        print("Column \"parameter\" not found in DataFrame.")
+        return
+    if 'date' not in df:
+        print("Column \"date\" not found in DataFrame.")
+        return
+    
     nw = pd.DataFrame()
-    for parameter in df['parameter'].unique().tolist():
-        nw[parameter] = df.loc[df.parameter == parameter, "value"].to_numpy()
+    unique_parameter = df['parameter'].unique().tolist()
+    nw['Date'] = df.loc[df.parameter == unique_parameter[0], "date"]
 
+    for parameter in unique_parameter:
+        nw[parameter] = df.loc[df.parameter == parameter, "value"].to_numpy()
+    
     return nw
 
-def get_long_lat(address) -> dict:
-    """
-    Gives back dict with latitude and longitude value of an adress. Request made via mapquest.
+def rename_columns(df:pd.DataFrame) -> pd.DataFrame:
+    mapping = utility.get_column_dict()
 
-        Parameters:
-            address (str): address of which latidude and longitude are requested
+    df.columns = map(str.lower, df.columns)
+    df.rename(columns=mapping, inplace=True)    
+    return df
 
-        Returns:
-            dict with latidude and longitude of address
-    """    
-
-    # input: address and API key
-    load_dotenv()
-    parameters = {
-        "key": os.getenv("api_key"),
-        "location": address
-    }
-
-    # respone from mapquest
-    response = requests.get("http://www.mapquestapi.com/geocoding/v1/address", params=parameters)
-    data = response.text
-    dataJ = json.loads(data)['results']
-
-    # save latitude and longitude value in dict
-    dict_geo={}
-    lat = (dataJ[0]['locations'][0]['latLng']['lat'])
-    dict_geo["lat"]=lat
-    lng = (dataJ[0]['locations'][0]['latLng']['lng'])
-    dict_geo["lng"]=lng
-
-    return dict_geo
-
-def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:bool=True) -> pd.DataFrame:
+def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:bool=False) -> pd.DataFrame:
     """
     Gives back a df with the weather forecast for the nearest weather station to a chosen address.
         Parameters:
@@ -66,14 +65,11 @@ def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:boo
             df_weather_forecast: df with weather forecast for chosen parameters
     """
 
-    if address is None:
-        address = "Auf der Reihe 2, 45884 Gelsenkirchen, Germany"
-
     if weather_parameters is None:
-        weather_parameters = ["Rad1h", "TTT", "FF"]
+        weather_parameters = utility.get_column_dict().keys()
 
     # latitude and longitude value from mapquest in decimal degree
-    lnglat = get_long_lat(address)
+    lnglat = utility.get_long_lat(address)
     lat = lnglat["lat"]
     lng = lnglat["lng"]
 
@@ -130,3 +126,44 @@ def mosmix_forecast(address:str=None, weather_parameters:list=None, humanize:boo
           value = station_name)
 
     return df_weather_forecast
+
+class utility:
+    def get_column_dict(filename:str="weather parameter mapping.pkl") -> dict:
+        with open(Path(__file__).parent / filename, 'rb') as f:
+            mapping:dict = pickle.load(f)
+        return mapping
+
+    def get_long_lat(address) -> dict:
+        """
+        Gives back dict with latitude and longitude value of an adress. Request made via mapquest.
+
+            Parameters:
+                address (str): address of which latidude and longitude are requested
+
+            Returns:
+                dict with latidude and longitude of address
+        """    
+
+        if address is None:
+            address = "Auf der Reihe 2, 45884 Gelsenkirchen, Germany"
+
+        # input: address and API key
+        load_dotenv()
+        parameters = {
+            "key": os.getenv("api_key"),
+            "location": address
+        }
+
+        # respone from mapquest
+        response = requests.get("http://www.mapquestapi.com/geocoding/v1/address", params=parameters)
+        data = response.text
+        dataJ = json.loads(data)['results']
+
+        # save latitude and longitude value in dict
+        dict_geo={}
+        lat = (dataJ[0]['locations'][0]['latLng']['lat'])
+        dict_geo["lat"]=lat
+        lng = (dataJ[0]['locations'][0]['latLng']['lng'])
+        dict_geo["lng"]=lng
+
+        return dict_geo
