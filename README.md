@@ -42,13 +42,13 @@ Install [node.js](https://nodejs.org/en/download/) and run the following command
 Run the following commands from the `interface` folder:
 
 ```bash
-  npm manage.py makemigrations
+  python manage.py makemigrations
 ```
 ```bash
-  npm manage.py migrate --run-syncdb
+  python manage.py migrate --run-syncdb
 ```
 ```bash
-  npm manage.py runserver
+  python manage.py runserver
 ```
 
 ### Pipeline
