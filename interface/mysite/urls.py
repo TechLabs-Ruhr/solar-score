@@ -20,6 +20,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users/', include('users.urls')),
+    path('calc/',include('calculator.urls')),
     re_path('.*',TemplateView.as_view(template_name="index.html"))
-    
 ]
