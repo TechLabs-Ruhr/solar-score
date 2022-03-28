@@ -1,0 +1,65 @@
+.solarscore__header {
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.solarscore__header-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+   
+    margin-right: 5rem;
+}
+
+.solarscore__header-content h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.solarscore__header-content p {
+    font-family: var(--font-family);
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    
+    color:#13100D;
+    margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 1050px) {
+    .solarscore__header {
+        flex-direction: column;
+    }
+    .solarscore__header-content {
+        margin: 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .solarscore__header h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+    .solarscore__header p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .solarscore__header h1 {
+        font-size: 36px;
+        line-height: 48px;
+    }
+    .solarscore__header p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}

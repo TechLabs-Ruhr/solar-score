@@ -1,10 +1,3 @@
-## TODO for the Techies
-Please **fill out the following information below**, as soon as possible. It is **required** to have this file completely filled out and up to date at the end of the project phase.
-You can of course use this file to manage your project, e.g. as a place to keep your todos and to plan your features. Also, feel free to edit this readme in any kind of way you like, but the required base layout and information should be consistent throughout all techie projects.
-
-**Hint:** The following file is written in `markdown` which is a language to format text with simple characters. If you are unsure on how to use markdown then have a look at [this guide](https://www.markdownguide.org/basic-syntax/)
-
-By the end you should have filled out the following:
 1. **Project Title:** The title of the project, including a description which states the motivation/problem of the project and the developed solution.
 2. **How to Setup and Run:** The respective commands to install and run the project
 3. **Examples:** A brief overview on how to use the main functionalities of your project (does not have to be code)
@@ -12,26 +5,70 @@ By the end you should have filled out the following:
 5. **Authors:** Please add all of you and link your respective GitHub profile and other information if you want to. This part if completely up to you.
 6. If you are done filling out the information below, please **delete this TODO Section** to keep your project readme clean for other people to get to know more about your project.
 
-# Solar Score
+# SolarScore
 
-Description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-
+In times of rising energy prices and the danger of climate change we want to achieve that solar plant owners get the most out of their solar plant.Based on the weather forecast for the next days SolarScore predicts the solar plant's power output so that the owner can plan when to for example charge her/his electric vehicle and it is avoided that energy is not used directly. 
 
 ## How to Setup and Run
-
 In order to setup the project, please proceed as follows:
 
-```bash
-  npm install my-project
+### MapQuest API-key
+Create a new environment with the `environment.yml` in the root folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
+
+
+### MapQuest API-key
+With the help of MapQuest the coordinates are requested for a specific adress.Please register at their [webpage]( https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register) and copy your personal API key in an `.env` file:
+
+```shell
+api_key = <that_is_an_api_key>
 ```
 
-After successful installation use the following command to run the project:
+### Frontend
+Install [node.js](https://nodejs.org/en/download/) and run the following commands from the `website` folder:
 
 ```bash
-  npm run
+  npm install
 ```
+
+```bash
+  npm run build
+```
+
+```bash
+  npm start
+```
+
+### Backend
+Run the following commands from the `interface` folder:
+
+```bash
+  npm manage.py makemigrations
+```
+```bash
+  npm manage.py migrate --run-syncdb
+```
+```bash
+  npm manage.py runserver
+```
+
+### Pipeline
+To test the calculation pipeline you can use following commands from the top level folder:
+```bash
+python -m fire manage.py testfetching
+```
+```bash
+python -m fire manage.py testinferencing
+```
+```bash
+python -m fire manage.py testdrawing
+```
+The complete routine is started via
+```bash
+python -m fire manage.py runpipeline
+```
+While using it in a terminal it assumes default values for `address` and `p_max` input values.
+
 ## Examples
-
 You can see a brief overview of how to use the main functionality below
 
 ```javascript
@@ -44,9 +81,9 @@ function App() {
 
   
 ## Roadmap
-
-- Additional browser support
-- Add more integrations
+- Optimize model predictions by further learning
+- Feedback loop for user data (Import)
+- Export of forecast data
 
   
 ## Authors
@@ -56,6 +93,3 @@ function App() {
 - [@Inka](https://github.com/JuaKaliKubwa)
 - [@Marian](https://github.com/Kallonaut)
 - [@Denise](https://github.com/DeniseGrunert)
-- [@My](https://github.com/tramyynt)
-
-
