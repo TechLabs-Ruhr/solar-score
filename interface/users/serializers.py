@@ -14,7 +14,7 @@ class UserSerializer(RegisterSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('username','email', 'password', "name", "address", "pv", 'last_login', 'date_joined', 'is_staff')
+        fields = ('username', 'email', 'password', "name", "address", "pv", 'last_login', 'date_joined', 'is_staff')
 
     
     def get_cleaned_data(self):

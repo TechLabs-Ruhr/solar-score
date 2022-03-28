@@ -57,6 +57,13 @@ a {
 
 .solarscore__flexheader {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 3rem;
+}
+
+.solarscore__flexheader-header {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 3rem;

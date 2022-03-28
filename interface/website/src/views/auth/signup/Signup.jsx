@@ -93,21 +93,21 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <label className="solarscore__label" htmlFor='username'>Username:</label><br />
-        <input className="solarscore__signup-messagebox"
-          name='username'
-          type='text'
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          required
-        />{' '}
-        <br />
         <label className="solarscore__label" htmlFor='email'>Email address:</label><br />
         <input className="solarscore__signup-messagebox"
           name='email'
           type='email'
           value={email}
           onChange={e => setEmail(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <label className="solarscore__label" htmlFor='username'>Username:</label><br />
+        <input className="solarscore__signup-messagebox"
+          name='username'
+          type='text'
+          value={username}
+          onChange={e => setUsername(e.target.value)}
           required
         />{' '}
         <br />
@@ -136,3 +136,6 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+
