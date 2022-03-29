@@ -168,9 +168,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 # Rest Framework config.
 REST_FRAMEWORK = {    
 'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
-'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-],
+#'DEFAULT_PERMISSION_CLASSES': [
+#    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
+
 'DEFAULT_AUTHENTICATION_CLASSES': [        
     'rest_framework.authentication.BasicAuthentication',    
 ],
@@ -178,4 +178,24 @@ REST_FRAMEWORK = {
 
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'users.serializers.UserSerializer'
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+    'loggers': {
+        'mysite': {
+            'handlers': ['console'],
+            'level': 'DEBUG' 
+        }
+    },
 }
