@@ -32,9 +32,12 @@ def runpipeline(address:str=None, p_max:float=1) -> str:
     print(f"Predicted power with {pdf.shape[0]} timesteps\n")
 
     print(f"Creating plot ...")
-    drawing.open_plotly_html(pdf)
-    div = 1
-    #div = drawing.get_plotly_string(df=pdf)
+    div = drawing.get_plotly_string(df=pdf)
+
+    # myText = open(r'chart.txt','w')
+    # text = myText.read()
+    # myText.close()
+
     print(f"Created plot with {len(div)} characters\n")
 
     print(f"Finished pipeline:")
