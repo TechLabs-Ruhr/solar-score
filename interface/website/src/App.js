@@ -1,6 +1,6 @@
 import React from 'react';
 import {Footer, Header, Signin} from './containers';
-import {Navbar, Test, Test2} from './components';
+import {Navbar, Test, Test2, Plotly, Prediction} from './components';
 import './App.css';
 
 const App = () => {
@@ -15,6 +15,8 @@ const App = () => {
       </div>
       <Test />
       <Test2 />
+      <Plotly />
+      <Prediction />
       <Footer />
 
   </div>
