@@ -42,17 +42,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd Party Apps
     'clients',
-    'users', # new
-    'rest_framework', # new
-    'rest_framework.authtoken', # new
-    'dj_rest_auth', # new
     'django.contrib.sites', # new
     'allauth', # new
     'allauth.account', # new
-    'allauth.socialaccount', # new
+
+    
+    'rest_framework', # new
+    'dj_rest_auth', # new
     'dj_rest_auth.registration', # new
-    'corsheaders', # new# Local Apps
+    'rest_framework.authtoken', # new
+    'users', # new
     'website',
+
+    #'allauth.socialaccount', # new
+    'corsheaders', # new# 
+    
 ]
 
 MIDDLEWARE = [
@@ -71,7 +75,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -162,14 +166,43 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 
-# Rest Framework config. Add all of this.
+# Rest Framework config.
 REST_FRAMEWORK = {    
-'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
-'DEFAULT_AUTHENTICATION_CLASSES': [        
-    'rest_framework.authentication.TokenAuthentication',    
-    ],
-'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.BrowsableAPIRenderer',
-        'rest_framework.renderers.JSONRenderer',
-    ],
+  'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
+  #'DEFAULT_PERMISSION_CLASSES': [
+  #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
+
+  'DEFAULT_AUTHENTICATION_CLASSES': [        
+      'rest_framework.authentication.TokenAuthentication',    
+      ],
+  'DEFAULT_RENDERER_CLASSES': [
+          'rest_framework.renderers.BrowsableAPIRenderer',
+          'rest_framework.renderers.JSONRenderer',
+      ],
+      'rest_framework.authentication.BasicAuthentication',    
+  ],
+}
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'users.serializers.UserSerializer'
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+    'loggers': {
+        'mysite': {
+            'handlers': ['console'],
+            'level': 'DEBUG' 
+        }
+    },
 }

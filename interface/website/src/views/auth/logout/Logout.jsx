@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import './logout.css'
 
 const Logout = () => {
   const [loading, setLoading] = useState(true);
@@ -33,8 +34,10 @@ const Logout = () => {
     <div>
       {loading === false && (
         <Fragment>
-          <h1>Are you sure you want to logout?</h1>
-          <input type='button' value='Logout' onClick={handleLogout} />
+          <div className="solarscore__logout solarscore__logout-content">
+            <h1>Are you sure you want to logout?</h1>
+            <input className="solarscore__logout-button" type='button' value='Logout' onClick={handleLogout} />
+          </div>
         </Fragment>
       )}
     </div>

@@ -23,7 +23,7 @@ const Navbar = () => {
           <Fragment>
             {' '}
             <div className="solarscore__navbar-sign">
-              <Link to='/logout'>Logout</Link>
+              <p><Link to='/logout'>Logout</Link></p>
             </div>
             <div className="solarscore__navbar-sign">
               <Link to='/dashboard'>

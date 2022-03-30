@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include,path, re_path
 from django.views.generic import TemplateView
 from clients import views 
+from users.views import load_demo_data
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,7 @@ urlpatterns = [
     re_path('.*',TemplateView.as_view(template_name="index.html")),
     re_path(r'^api/clients/$', views.clients_list),
     re_path(r'^api/clients/([0-9])$', views.clients_detail),
+    path('calc/',include('calculator.urls')),
+    re_path(r'^hello$', load_demo_data),
+    re_path('.*',TemplateView.as_view(template_name="index.html"))
 ]
