@@ -7,10 +7,11 @@ class dataframe:
         """Plots input/output columns of given DataFrame."""
         y = utility.get_column_dict().values()
 
-        fig, [ax1,ax2,ax3] = plt.subplots(3, 1)
-        df.plot(x='Time', y='unique_id', grid=True, ax=ax1);
-        df.plot(x='Time', y=y, grid=True, ax=ax2);
-        df.plot(x='Time', y=target_column, ax = ax3);
+        fig, ax = plt.subplots(2+len(y), 1, figsize=(15,15))
+        df.plot(x='Time', y='unique_id', grid=True, ax=ax[0], color='black');
+        for i,column in enumerate(y):
+            df.plot(x='Time', y=column, grid=True, ax=ax[i+1], color='orange');
+        df.plot(x='Time', y=target_column, ax = ax[-1], color='green');
 
     def plot_batches(df:pd.DataFrame):
         """"""
@@ -77,6 +78,14 @@ class utility:
         edp = example_data_parameter(num_features)
         return edp.create_sample_dataframe()
 
+    def normalize_columns(df:pd.DataFrame, columns) -> pd.DataFrame:
+        result = df.copy()
+        for column in columns:
+            max_value = df[column].max()
+            min_value = df[column].min()
+            result[column] = (df[column] - min_value) / (max_value - min_value)
+        return result
+
 class train_data:
     """Represents the final data layer before training."""
     X = None
@@ -119,7 +128,7 @@ class train_data:
         num_batches = self.X.shape[0]
         num_features = self.X.shape[1]
         if num_batches > num_limit:
-            print(f"Too many batches. Display only the first and last {half_lim}.")
+            print(f"Too many batches ({num_batches}). Display only the first and last {half_lim}.")
             num_batches = num_limit
         fig, axs = subplots(1, num_batches, sharey=True)
         for c,n in enumerate(range(half_lim)):
