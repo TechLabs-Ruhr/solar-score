@@ -25,6 +25,7 @@ dependencies:
   - dj-rest-auth=2.2.4=pyhd8ed1ab_0
   - django=4.0.3=py38haa244fe_0
   - django-allauth=0.41.0=py_0
+  - django-cors-headers=3.11.0=pyhd8ed1ab_0
   - djangorestframework=3.13.1=pyhd8ed1ab_0
   - entrypoints=0.4=pyhd8ed1ab_0
   - executing=0.8.2=pyhd8ed1ab_0
