@@ -25,12 +25,14 @@ def clients_list(request):
 @api_view(['PUT', 'DELETE'])
 def clients_detail(request, pk):
     try:
-        student = Client.objects.get(pk=pk)
+        client:Client = Client.objects.get(pk=pk)
+        print(client.location)
+
     except Client.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'PUT':
-        serializer = ClientSerializer(student, data=request.data,context={'request': request})
+        serializer = ClientSerializer(client, data=request.data,context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
