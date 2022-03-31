@@ -88,8 +88,8 @@ function App() {
   
 ## Authors
 
-- [@Katharina](https://github.com/KatWeid)
-- [@Niklas](https://github.com/WeitzelN)
-- [@Inka](https://github.com/JuaKaliKubwa)
-- [@Marian](https://github.com/Kallonaut)
-- [@Denise](https://github.com/DeniseGrunert)
+- [@Katharina](https://github.com/KatWeid), Web Development Track
+- [@Niklas](https://github.com/WeitzelN), Data Science Track
+- [@Inka](https://github.com/JuaKaliKubwa), Data Science Track
+- [@Denise](https://github.com/DeniseGrunert), Data Science Track
+- [@Marian](https://github.com/Kallonaut), Deep Learning Track

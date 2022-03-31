@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd Party Apps
+    'clients',
     'django.contrib.sites', # new
     'allauth', # new
     'allauth.account', # new
@@ -167,13 +168,17 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 # Rest Framework config.
 REST_FRAMEWORK = {    
-'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
-#'DEFAULT_PERMISSION_CLASSES': [
-#    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
-
-'DEFAULT_AUTHENTICATION_CLASSES': [        
-    'rest_framework.authentication.BasicAuthentication',    
-],
+    'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
+    'DEFAULT_AUTHENTICATION_CLASSES': [        
+        # 'rest_framework.authentication.TokenAuthentication',    
+        'rest_framework.authentication.BasicAuthentication',    
+        ],
+    'DEFAULT_RENDERER_CLASSES': [
+            'rest_framework.renderers.BrowsableAPIRenderer',
+            'rest_framework.renderers.JSONRenderer',
+        ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
 }
 
 REST_AUTH_REGISTER_SERIALIZERS = {
