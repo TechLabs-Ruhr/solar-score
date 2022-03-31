@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './test.css';
+import './Test Styling.css';
 import Plot from 'react-plotly.js'
 
-const TestArray = () => {
+const TestPrediction = () => {
   const [result, setLoadedData] = useState([]);
 
-  const requestDataArray = () => {
+  const requestData = () => {
     axios
       .get('http://127.0.0.1:8000/testarray')
       .then((res) => {
@@ -21,7 +21,8 @@ const TestArray = () => {
     <div className="solarscore__test section__margin" id="test">
       <div className="solarscore__test-heading">
         <h1 className="gradient-text">Prediction Test </h1>
-        <button className="solarscore__test-button" onClick={requestDataArray}>Test Array</button>
+        <h4> This section is for testing the final layout and should not be removed. </h4>
+        <button className="solarscore__test-button" onClick={requestData}>New power prediction</button>
         <Plot
           data={
             [
@@ -39,4 +40,4 @@ const TestArray = () => {
 };
 
 
-export default TestArray;
+export default TestPrediction;
