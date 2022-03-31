@@ -17,19 +17,19 @@ from django.contrib import admin
 from django.urls import include,path, re_path
 from django.views.generic import TemplateView
 from clients.views import clients_list, clients_detail
-from users.views import load_testmarian_data, load_testinka, load_testkatharina, load_testdenise, load_testarray_data
+from users.views import load_testmarian, load_testinka, load_testkatharina, load_testdenise, load_testprediction
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users/', include('users.urls')),
-    re_path('.*',TemplateView.as_view(template_name="index.html")),
+    # re_path('.*',TemplateView.as_view(template_name="index.html")),
     re_path(r'^api/clients/$', clients_list),
     re_path(r'^api/clients/([0-9])$', clients_detail),
     path('calc/',include('calculator.urls')),
     re_path(r'^testinka$', load_testinka),
-    re_path(r'^testmarian$', load_testmarian_data),
+    re_path(r'^testmarian$', load_testmarian),
     re_path(r'^testdenise$', load_testdenise),
     re_path(r'^testkatharina$', load_testkatharina),
-    re_path(r'^testarray$', load_testarray_data),
+    re_path(r'^testprediction$', load_testprediction),
     re_path('.*',TemplateView.as_view(template_name="index.html"))
 ]

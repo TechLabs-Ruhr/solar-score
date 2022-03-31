@@ -466,10 +466,10 @@ Thumbs.db
 
 # CodeStream plugin
 # https://plugins.jetbrains.com/plugin/12206-codestream
-prediction/examples/tsai/01_Data/data/forecasting/Sunspots.csv
-prediction/test/data/forecasting/Sunspots.csv
+
 prediction/test/models/model.pth
-prediction/test/data/london/EXPORT HourlyData - Customer Endpoints.csv
-prediction/test/data/london/EXPORT HourlyData - Feeders.csv
-prediction/test/data/london/EXPORT HourlyData - Network Endpoints.csv
-prediction/test/data/london/EXPORT HourlyData - Substation Voltages.csv
+*Sunspots.csv
+*EXPORT HourlyData - Customer Endpoints.csv
+*EXPORT HourlyData - Feeders.csv
+*EXPORT HourlyData - Network Endpoints.csv
+*EXPORT HourlyData - Substation Voltages.csv

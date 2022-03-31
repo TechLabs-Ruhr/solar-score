@@ -9,8 +9,7 @@ from rest_framework.permissions import IsAdminUser
 from .models import CustomUser
 from .serializers import UserSerializer
 from rest_framework.decorators import api_view
-from pathlib import Path
-sys.path.append(Path.cwd().parent.parent.parent.parent)
+import pipeline
 
 
 class UserListView(ListAPIView):
@@ -54,10 +53,10 @@ def load_testmarian(request):
     logger.critical(f"request is {request}")
     logger.critical("DEMO DATA LOADING CALLED")
 
-    res = helperFunction42() # this could be your python solar score precition script
+    x,y = helperFunctionPipeline() # this could be your python solar score precition script
 
     # here could the chart be inserted as sting like "chart":"<div> .. </div>"
-    data = {"message":"test", "data":res} 
+    data = {"message":"test", "x":x, "y":y} 
 
     return HttpResponse(json.dumps(data), content_type = "application/json")
 
@@ -90,7 +89,7 @@ def load_testkatharina(request):
     return HttpResponse(json.dumps(data), content_type = "application/json")
 
 @api_view(['GET'])
-def load_testarray_data(request):
+def load_testprediction(request):
     #  critical logging level so that it really gets displayed in the console
     logger.critical(f"request is {request}")
     logger.critical("DEMO DATA LOADING CALLED")
@@ -102,25 +101,11 @@ def load_testarray_data(request):
     return HttpResponse(json.dumps(data), content_type = "application/json")
 
 
-@api_view(['GET'])
-def load_testmarian_data(request):
-    #  critical logging level so that it really gets displayed in the console
-    logger.critical(f"request is {request}")
-    logger.critical("DEMO DATA LOADING CALLED")
-
-    res = helperFuntionDiv() # this could be your python solar score precition script
-
-    # here could the chart be inserted as sting like "chart":"<div> .. </div>"
-    data = {"message":"test", "data":res} 
-
-    return HttpResponse(json.dumps(data), content_type = "application/json")
-
 def helperFunctionPipeline():
     """Returns power data over time."""
 
-    
-
-    return None
+    x,y = pipeline.run()
+    return x,y
 
 def helperFunction42():
     """Returns just the integer '42'."""

@@ -8,7 +8,7 @@ const TestPrediction = () => {
 
   const requestData = () => {
     axios
-      .get('http://127.0.0.1:8000/testarray')
+      .get('http://127.0.0.1:8000/testprediction')
       .then((res) => {
         setLoadedData(res.data);
         console.log(res);
