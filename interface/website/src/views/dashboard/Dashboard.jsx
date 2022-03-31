@@ -18,7 +18,7 @@ const Dashboard = () => {
       })
         .then(res => res.json())
         .then(data => {
-          setUserEmail(data.name);
+          setUserEmail(data.username);
           setLoading(false);
         });
     }
