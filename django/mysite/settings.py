@@ -51,13 +51,11 @@ INSTALLED_APPS = [
 'rest_framework', # new
 'rest_framework.authtoken', # new
 'dj_rest_auth', # new
-
 'django.contrib.sites', # new
 'allauth', # new
 'allauth.account', # new
 'allauth.socialaccount', # new
 'dj_rest_auth.registration', # new
-
 'corsheaders', # new
 # Local Apps
 'users', # new

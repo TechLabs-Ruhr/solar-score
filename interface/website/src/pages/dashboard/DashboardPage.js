@@ -1,6 +1,6 @@
 import React from 'react';
 import Dashboard from '../../views/dashboard/Dashboard';
-import { Navbar} from '../../components';
+import { Navbar, Prediction} from '../../components';
 import './dashboardpage.css';
 
 const DashboardPage = () => {
@@ -11,6 +11,7 @@ const DashboardPage = () => {
      </div>
       <div className="solarscore__flexheader gradient__bg section__margin">
       <Dashboard/>
+      <Prediction />
       </div>
   </div>
   )

@@ -2,12 +2,29 @@ from tsai.all import *
 
 class dataframe:
     """Provides high level functionality for training on DataFrames."""
-    
-    def plot(df:pd.DataFrame):
+
+    def plot_all(df:pd.DataFrame, target_column:string='P_gen [kW]'):
         """Plots input/output columns of given DataFrame."""
-        y = utility.get_feature_names(df.shape[1]-3)
-        y.append('target')
-        df.plot(x='time', y=y, grid=True);
+        y = utility.get_column_dict().values()
+
+        fig, ax = plt.subplots(2+len(y), 1, figsize=(15,15))
+        df.plot(x='Time', y='unique_id', grid=True, ax=ax[0], color='black');
+        for i,column in enumerate(y):
+            df.plot(x='Time', y=column, grid=True, ax=ax[i+1], color='orange');
+        df.plot(x='Time', y=target_column, ax = ax[-1], color='green');
+
+    def plot_batches(df:pd.DataFrame):
+        """"""
+        swp = sliding_window_parameter(num_features=len(utility.get_column_dict().values()))
+        td = swp.create_training_data(df, 'P_gen [kW]')
+        td.plot_batches()
+
+    def prepare(df:pd.DataFrame) -> pd.DataFrame:
+        """"""
+        df = df.drop('Site', axis=1)
+        df['unique_id'] = np.ones((df.shape[0]))
+        df = df.fillna(0)
+        return df
 
     def train(df:pd.DataFrame):
         """Performs preprocessing and training on given DataFrame. Returns the Learner."""
@@ -19,6 +36,24 @@ class dataframe:
         swp = sliding_window_parameter()
         return swp.create_training_data(df)
 
+    def get_time_delta(df:pd.DataFrame, id:int=-1):
+        """"""
+
+        if id not in df['unique_id'].unique():
+            print(f'ID {id} not in DataFrame.')
+            return
+        format = '%Y-%m-%d %H:%M:%S'
+        if id == -1:
+            sub = df.copy()
+        else:
+            sub = df[df['unique_id'] == id]
+
+        time_start = datetime.strptime(sub['Time'].iloc[0], format)
+        time_end = datetime.strptime(sub['Time'].iloc[-1], format)
+        time_delta = time_end-time_start
+        print(f'{id}     {time_delta}')
+        return time_delta
+
 class utility:
     """Provides helper functionality without context to other classes."""
 
@@ -29,6 +64,11 @@ class utility:
             vars.append(f'var{f+1}')
         return vars
 
+    def get_column_dict(filename:str="weather parameter mapping.pkl") -> dict:
+        with open(Path(__file__).parent / filename, 'rb') as f:
+            mapping:dict = pickle.load(f)
+        return mapping
+
     def get_feature_count(df:pd.DataFrame):
         """"""
         return len(df.columns) - 3
@@ -37,6 +77,14 @@ class utility:
         """"""
         edp = example_data_parameter(num_features)
         return edp.create_sample_dataframe()
+
+    def normalize_columns(df:pd.DataFrame, columns) -> pd.DataFrame:
+        result = df.copy()
+        for column in columns:
+            max_value = df[column].max()
+            min_value = df[column].min()
+            result[column] = (df[column] - min_value) / (max_value - min_value)
+        return result
 
 class train_data:
     """Represents the final data layer before training."""
@@ -80,9 +128,9 @@ class train_data:
         num_batches = self.X.shape[0]
         num_features = self.X.shape[1]
         if num_batches > num_limit:
-            print(f"Too many batches. Display only the first and last {half_lim}.")
+            print(f"Too many batches ({num_batches}). Display only the first and last {half_lim}.")
             num_batches = num_limit
-        fig, axs = subplots(1, num_batches)
+        fig, axs = subplots(1, num_batches, sharey=True)
         for c,n in enumerate(range(half_lim)):
             for f in range(num_features):
                 axs[c].plot(self.X[n,f,:])#, 'tab:green')
@@ -128,13 +176,13 @@ class example_data_parameter:
         self.time = np.linspace(1, num_points, num_points)
         
         if with_unique:
-            data[0::2,0] = 1
-            data[1::2,0] = 2
+            data[:int(num_points/2),0] = 1
+            data[int(num_points/2):,0] = 2
         else:
             data[:,0] = 1
         for f in range(self.num_features):          
             data[:,f+1] = 2*np.sin(2*np.pi*self.time/self.num_hours_per_day + f)
-            data[:,self.num_features+1] += data[:,f]
+            data[:,self.num_features+1] += data[:,f+1]
         data[:,self.num_features+1] += np.random.randint(-10,10,(num_points))/10
         return data
 
@@ -147,8 +195,8 @@ class example_data_parameter:
         print(columns)
         frame = pd.DataFrame(data, columns=columns)
         frame = frame.reset_index()
-        frame.rename(columns={'index': 'time'}, inplace=True)
-        frame = frame.sort_values('time')
+        frame.rename(columns={'index': 'Time'}, inplace=True)
+        frame = frame.sort_values('Time')
         return frame
 
 class sliding_window_parameter:
@@ -166,7 +214,7 @@ class sliding_window_parameter:
     pad_remainder = False #11 Allows to pad remainder subsequences when the sliding window is applied and get_y == [] (unlabeled data).
     return_key = False #12 When True, the key corresponsing to unique_id_cols for each sample is returned
     seq_first = True #13 True if input shape (seq_len, n_vars), False if input shape (n_vars, seq_len).
-    sort_by = ['time'] #14 Column/s used for sorting the array in ascending order.
+    sort_by = ['Time'] #14 Column/s used for sorting the array in ascending order.
     start = 0 #15 Determines the step where the first window is applied. Default: 0. Previous steps will be discarded. 
     stride = 1 #16 Number of datapoints the window is moved ahead along the sequence. Default: 1. If None, stride=window_len (no overlap).
     unique_id_cols = []#['unique_id'] #17 pd.DataFrame columns that will be used to identify a time series for each entity.
@@ -178,10 +226,11 @@ class sliding_window_parameter:
         """Initializes new default parameter."""
         self.get_x = utility.get_feature_names(num_features)
 
-    def create_training_data(self, df:pd.DataFrame):
-        """Performs sliding window operation on DataFrame and returns batch_data object."""         
-        self.get_x = utility.get_feature_names(utility.get_feature_count(df))
-        
+    def create_training_data(self, df:pd.DataFrame, target_column:string='P_gen [kW]'):
+        """Performs sliding window operation on DataFrame and returns train_data object."""         
+        self.get_x = list(utility.get_column_dict().values())
+        self.get_y = [target_column]
+
         output = [df.groupby(['unique_id']).apply(lambda x: SlidingWindow(
             add_padding_feature=self.add_padding_feature,
             ascending=self.ascending,
@@ -199,7 +248,6 @@ class sliding_window_parameter:
             sort_by=self.sort_by,
             start=self.start,
             stride=self.stride,
-            #unique_id_cols=unique_id_cols, {unexpected keyword}
             #verbose=verbose, {unexpected keyword}
             window_len=self.window_len,
             y_func=self.y_func,
@@ -207,6 +255,6 @@ class sliding_window_parameter:
 
         X = np.concatenate([oi[0] for oi in output])
         y = np.concatenate([oi[1] for oi in output])
-        splits = get_splits(o=y, n_splits=1, valid_size=.2, shuffle=False)
+        splits = get_splits(o=y, n_splits=1, valid_size=.2, shuffle=True, stratify=False)
 
         return train_data(X=X, y=y, splits=splits)
