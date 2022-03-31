@@ -1,7 +1,8 @@
 import React from 'react';
 import {Footer, Header, Signin} from './containers';
-import {Navbar, Test, Test2} from './components';
+import {Navbar, TestInka, TestMarian} from './components';
 import './App.css';
+import TestArray from './components/test/ArrayPlotlyTest';
 
 const App = () => {
   return (
@@ -13,8 +14,9 @@ const App = () => {
       <Header />
       <Signin />
       </div>
-      <Test />
-      <Test2 />
+      <TestInka />
+      <TestMarian />
+      <TestArray />
       <Footer />
 
   </div>
