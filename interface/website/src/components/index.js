@@ -1,7 +1,7 @@
 
 export { default as Navbar } from './navbar/Navbar';
-export { default as Test } from './test/Test';
-export { default as Test2 } from './test2/Test2';
-export { default as Plotly } from './plotly/Plotly';
-export { default as Prediction } from './prediction/Prediction';
-export { default as Predictionstring } from './predictionstring/Predictionstring';
+export { default as TestPrediction } from './test/Test Prediction';
+export { default as TestMarian } from './test/Test Marian';
+export { default as TestInka } from './test/Test Inka';
+export { default as TestDenise } from './test/Test Denise';
+export { default as TestKatharina } from './test/Test Katharina';
