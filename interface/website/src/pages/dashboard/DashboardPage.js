@@ -11,7 +11,7 @@ const DashboardPage = () => {
      </div>
       <div className="solarscore__flexheader gradient__bg section__margin">
       <Dashboard/>
-      <Prediction />
+      {/* <Prediction /> */}
       </div>
   </div>
   )
