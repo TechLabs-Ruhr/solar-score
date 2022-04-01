@@ -17,7 +17,7 @@ Create a new environment with the `environment.yml` in the root folder as descri
 
 
 ### MapQuest API-key
-With the help of MapQuest the coordinates are requested for a specific adress.Please register at their [webpage]( https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register) and copy your personal API key in an `.env` file:
+With the help of MapQuest the coordinates are requested for a specific adress.Please register at their [webpage]( https://developer.mapquest.com/user/login/sign-up) and copy your personal API key in an `.env` file:
 
 ```shell
 api_key = <that_is_an_api_key>
