@@ -6,13 +6,16 @@
 6. If you are done filling out the information below, please **delete this TODO Section** to keep your project readme clean for other people to get to know more about your project.
 
 # SolarScore
-
 In times of rising energy prices and the danger of climate change we want to achieve that solar plant owners get the most out of their solar plant.Based on the weather forecast for the next days SolarScore predicts the solar plant's power output so that the owner can plan when to for example charge her/his electric vehicle and it is avoided that energy is not used directly. 
 
 ## How to Setup and Run
 In order to setup the project, please proceed as follows:
 
+### Source
+Please clone this repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
+
 ### Python
+Make sure to install the python package manager [Anaconda](https://www.anaconda.com/products/distribution) on your computer.
 Create a new environment with the `environment.yml` in the `interface` folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
 
 ### MapQuest API-key
