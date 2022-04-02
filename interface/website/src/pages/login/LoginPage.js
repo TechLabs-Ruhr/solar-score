@@ -7,10 +7,8 @@ import './loginpage.css';
 const LoginPage = () => {
   return (
     <div className="Login">
-     <div className="gradient__bg">
      <Navbar />
-     </div>
-      <div className="solarscore__flexheader gradient__bg section__margin">
+      <div className="solarscore__flexheader section__margin">
       <Login/>
       </div>
   </div>

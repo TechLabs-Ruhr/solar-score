@@ -6,13 +6,8 @@ import './App.css';
 const App = () => {
   return (
     <div className="App">
-      <div className="gradient__bg">
-        <Navbar />
-      </div>
-      <div className="solarscore__flexheader gradient__bg section__margin">
-        <Header />
-        <Signin />
-      </div>
+      <Navbar />
+      <Header />
       <TestPrediction />
       <TestInka />
       <TestMarian />
