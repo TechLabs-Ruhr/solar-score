@@ -14,6 +14,10 @@ In order to setup the project, please proceed as follows:
 ### Source
 Please clone this repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
 
+###OS
+
+At the moment our project only works with Windows as an OS.
+
 ### Python
 Make sure to install the python package manager [Anaconda](https://www.anaconda.com/products/distribution).
 Now you can create a new environment from `environment.yml` lying in the `interface` folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
@@ -35,6 +39,13 @@ Install [node.js](https://nodejs.org/en/download/) and run the following command
 
 ```bash
   npm run build
+```
+If you get the error message: "JavaScript Heap Out of Memory"
+
+Then enter this command:
+
+```bash
+  set NODE_OPTIONS=--max_old_space_size=4096
 ```
 
 ```bash
@@ -72,18 +83,6 @@ The complete routine is started via
 python -m fire pipeline.py run
 ```
 While using it in a terminal it assumes default values for `address` and `p_max` input values.
-
-## Examples
-You can see a brief overview of how to use the main functionality below
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
-
   
 ## Roadmap
 - Optimize model predictions by further learning
