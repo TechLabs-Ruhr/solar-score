@@ -40,7 +40,7 @@ Install [node.js](https://nodejs.org/en/download/) and run the following command
 ```bash
   npm run build
 ```
-If you get the error message: "JavaScript Heap Out of Memory"
+If you get the error message: `JavaScript Heap Out of Memory`
 
 Then enter this command:
 
