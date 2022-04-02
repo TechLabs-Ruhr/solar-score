@@ -14,9 +14,9 @@ In order to setup the project, please proceed as follows:
 ### Source
 Please clone this repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
 
-###OS
+### OS
 
-At the moment our project only works with Windows as an OS.
+At the moment our project only works with Windows as an OS. Not all packages that are part of our environment exist on Mac in the same version. Further, the `model.pkl` is depend on the OS. 
 
 ### Python
 Make sure to install the python package manager [Anaconda](https://www.anaconda.com/products/distribution).
