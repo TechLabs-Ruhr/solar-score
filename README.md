@@ -12,12 +12,11 @@ In times of rising energy prices and the danger of climate change we want to ach
 ## How to Setup and Run
 In order to setup the project, please proceed as follows:
 
-### MapQuest API-key
-Create a new environment with the `environment.yml` in the root folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
+### Python
+Create a new environment with the `environment.yml` in the `interface` folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
 
-
 ### MapQuest API-key
-With the help of MapQuest the coordinates are requested for a specific adress.Please register at their [webpage]( https://developer.mapquest.com/user/login/sign-up) and copy your personal API key in an `.env` file:
+With the help of MapQuest the coordinates are requested for a specific adress.Please register at their [webpage](https://developer.mapquest.com/user/login/sign-up) and copy your personal API key in an `.env` file to the `interface.data` folder:
 
 ```shell
 api_key = '<that_is_an_api_key>'
@@ -51,7 +50,9 @@ Run the following commands from the `interface` folder:
   python manage.py runserver
 ```
 
-### Pipeline
+### (Pipeline)
+The following steps are not necessary for setup or running.
+
 To test the calculation pipeline you can use following commands from the `interface` folder:
 ```bash
 python -m fire pipeline.py testfetching
