@@ -15,14 +15,15 @@ In order to setup the project, please proceed as follows:
 Please clone this repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
 
 ### Python
-Make sure to install the python package manager [Anaconda](https://www.anaconda.com/products/distribution) on your computer.
-Create a new environment with the `environment.yml` in the `interface` folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
+Make sure to install the python package manager [Anaconda](https://www.anaconda.com/products/distribution).
+Now you can create a new environment from `environment.yml` lying in the `interface` folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
 
 ### MapQuest API-key
-With the help of MapQuest the coordinates are requested for a specific adress.Please register at their [webpage](https://developer.mapquest.com/user/login/sign-up) and copy your personal API key in an `.env` file to the `interface.data` folder:
+With the help of MapQuest the coordinates are requested for a specific adress. 
+Please register at their [webpage](https://developer.mapquest.com/user/login/sign-up) and copy your personal API key in an `.env` file to the `interface.data` folder:
 
 ```shell
-api_key = '<that_is_an_api_key>'
+api_key = "<that_is_an_api_key>"
 ```
 
 ### Frontend
