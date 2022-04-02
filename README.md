@@ -24,7 +24,7 @@ api_key = '<that_is_an_api_key>'
 ```
 
 ### Frontend
-Install [node.js](https://nodejs.org/en/download/) and run the following commands from the `website` folder:
+Install [node.js](https://nodejs.org/en/download/) and run the following commands from the `interface.website` folder:
 
 ```bash
   npm install
@@ -52,19 +52,19 @@ Run the following commands from the `interface` folder:
 ```
 
 ### Pipeline
-To test the calculation pipeline you can use following commands from the top level folder:
+To test the calculation pipeline you can use following commands from the `interface` folder:
 ```bash
-python -m fire manage.py testfetching
+python -m fire pipeline.py testfetching
 ```
 ```bash
-python -m fire manage.py testinferencing
+python -m fire pipeline.py testinferencing
 ```
 ```bash
-python -m fire manage.py testdrawing
+python -m fire pipeline.py testdrawing
 ```
 The complete routine is started via
 ```bash
-python -m fire manage.py runpipeline
+python -m fire pipeline.py run
 ```
 While using it in a terminal it assumes default values for `address` and `p_max` input values.
 
