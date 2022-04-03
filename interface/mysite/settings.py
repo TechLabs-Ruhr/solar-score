@@ -172,8 +172,8 @@ ACCOUNT_UNIQUE_EMAIL = True
 REST_FRAMEWORK = {    
     'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
     'DEFAULT_AUTHENTICATION_CLASSES': [        
-        #'rest_framework.authentication.TokenAuthentication',    
-        'rest_framework.authentication.BasicAuthentication',    
+        'rest_framework.authentication.TokenAuthentication',    
+        #'rest_framework.authentication.BasicAuthentication',    
         ],
     # 'DEFAULT_PERMISSION_CLASSES': [
     #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
