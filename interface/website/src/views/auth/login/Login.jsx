@@ -70,7 +70,7 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />{' '}
           <br />
-          <input className="solarscore__login-button" type='submit' value='Login' />
+          <input className="solarscore__login-button_login" type='submit' value='Login' />
         </form>
       )}
     </div>

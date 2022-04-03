@@ -42,7 +42,7 @@
     margin-top: 1.5rem;
 }
 
-.solarscore__login-button {
+.solarscore__login-button_login {
     padding: 0.5rem 3rem;
     color: #0a1b3b;
     font-family: var(--font-family);

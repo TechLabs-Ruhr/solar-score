@@ -8,7 +8,7 @@ const LoginPage = () => {
   return (
     <div className="Login">
      <Navbar />
-      <div className="solarscore__flexheader section__margin">
+      <div className="section__margin">
       <Login/>
       </div>
   </div>
