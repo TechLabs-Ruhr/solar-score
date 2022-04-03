@@ -52,11 +52,19 @@ If you get the error message: `JavaScript Heap Out of Memory` please use the nex
 ```
 
 ### Backend
+
+Delete the `migrations` folder and `db.sqlite3` in order to create new versions in the next step.
+
 Run the following commands from the `interface` folder:
 
 ```bash
   python manage.py makemigrations
 ```
+
+```bash
+  python manage.py makemigrations users
+```
+
 ```bash
   python manage.py migrate --run-syncdb
 ```
