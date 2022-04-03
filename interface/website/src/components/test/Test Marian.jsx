@@ -8,7 +8,7 @@ const TestMarian = () => {
 
   const requestData = () => {
     axios
-      .get('http://127.0.0.1:8000/testmarian')
+      .get('http://127.0.0.1:8000/testmarian', 0)
       .then((res) => {
         setLoadedData(res.data);
         console.log(res);
@@ -31,7 +31,27 @@ const TestMarian = () => {
               type: "scatter"
             }
           ]}
-          layout={{ title: 'Test', }}
+          layout={
+            {
+              title: 'Diagramm',
+              xaxis: {
+                title: 'Zukünftiges Datum',
+                titlefont: {
+                  family: 'Courier New, monospace',
+                  size: 18,
+                  color: '#7f7f7f'
+                }
+              },
+              yaxis: {
+                title: 'Leistung in [kW]',
+                titlefont: {
+                  family: 'Courier New, monospace',
+                  size: 18,
+                  color: '#7f7f7f'
+                }
+              },
+            }
+          }
         />
       </div>
     </div>
