@@ -81,10 +81,9 @@ def load_testkatharina(request):
     logger.critical(f"request is {request}")
     logger.critical("DEMO DATA LOADING CALLED")
 
-    res = helperFunction42() # this could be your python solar score precition script
-
     # here could the chart be inserted as sting like "chart":"<div> .. </div>"
-    data = {"message":"test", "data":res} 
+
+    data = {"message":"test", "time": [8,10,12,13,14,16,18], "predictiom": [800,2000,3000,4000,3000,2000,1000]} 
 
     return HttpResponse(json.dumps(data), content_type = "application/json")
 
