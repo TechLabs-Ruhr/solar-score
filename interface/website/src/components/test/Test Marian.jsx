@@ -8,7 +8,7 @@ const TestMarian = () => {
 
   const requestData = () => {
     axios
-      .get('http://127.0.0.1:8000/testmarian', 0)
+      .get('http://127.0.0.1:8000/testmarian')
       .then((res) => {
         setLoadedData(res.data);
         console.log(res);
