@@ -15,15 +15,15 @@ At the moment our project only works with Windows as the operating system.
 Not all packages that are part of our template environment exist on Mac in the same version.
 Further, the deep learning model trained on Mac and saved as `model.pkl` cannot be easily loaded on Windows.
 
+### Source
+Please clone [this](https://github.com/TechLabs-Dortmund/solar-score.git) repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
+
 ### Python
 Make sure to install the python package manager [Anaconda](https://www.anaconda.com/products/distribution).
 Now you can create a new environment from `environment.yml` lying in the `interface` folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
 
 ### Node.js
 Install [node.js](https://nodejs.org/en/download/).
-
-### Source
-Please clone [this](https://github.com/TechLabs-Dortmund/solar-score.git) repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
 
 ### MapQuest API-key
 With the help of MapQuest the coordinates are requested for a specific adress. 
