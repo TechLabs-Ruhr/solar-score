@@ -2,14 +2,18 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAdminUser
 from .models import CustomUser
 from .serializers import UserSerializer
+
 from rest_framework.decorators import api_view
+from rest_framework.authentication import SessionAuthentication
+from rest_framework import viewsets
+
 import pipeline
 import sys
 import json
 import logging
 logger = logging.getLogger(__name__)
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 class UserListView(ListAPIView):
     queryset = CustomUser.objects.all()
@@ -50,16 +54,21 @@ def load_testmarian(request):
     """Backend data provider for Marian's test button."""
     #  critical logging level so that it really gets displayed in the console
     logger.critical(f"request is {request}")
-    logger.critical("DEMO DATA LOADING CALLED")
+    logger.critical("'load_testmarian' called")
 
-    # user:CustomUser = CustomUser.objects.get(pk=0)
-    # x,y = pipeline.run(user.address, user.pv)
-    x,y = pipeline.run()
+    try:
+        user:CustomUser = CustomUser.objects.get(pk=1)
 
-    # here could the chart be inserted as sting like "chart":"<div> .. </div>"
-    data = {"message":"test", "x":x, "y":y} 
+        print(float(user.pv))
 
-    return HttpResponse(json.dumps(data, default=str), content_type = "application/json")
+        x,y = pipeline.run(user.address, float(user.pv))
+        data = {"message":"test", "x":x, "y":y} 
+        return HttpResponse(json.dumps(data, default=str), content_type = "application/json")
+
+    except CustomUser.DoesNotExist:
+        user = None
+        logger.critical("User does not exist")
+        return HttpResponseNotFound("User does not exist")
 
 @api_view(['GET'])
 def load_testdenise(request):
