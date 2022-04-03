@@ -52,45 +52,42 @@ If you get the error message: `JavaScript Heap Out of Memory` please use the nex
 ```
 
 ### Backend
+
+Delete the `migrations` folder and `db.sqlite3` in order to create new versions in the next step.
+
 Run the following commands from the `interface` folder:
 
 ```bash
   python manage.py makemigrations
 ```
+
+```bash
+  python manage.py makemigrations users
+```
+
 ```bash
   python manage.py migrate --run-syncdb
+```
+
+You can create a user with special permissions.
+He/she will get default properties for `address` and `p_max` fields.
+```bash
+  python manage.py createsuperuser
 ```
 
 ## How to Run
 
 ### Frontend
+Always start the frontend first using the following command in the `interface` directory.
 ```bash
   npm start
 ```
 
 ### Backend
+Afterwards you can start the backend from the `interface` folder as well.
 ```bash
   python manage.py runserver
 ```
-
-### (Pipeline)
-The following steps are not necessary for setup or running.
-
-To test the calculation pipeline you can use following commands from the `interface` folder:
-```bash
-python -m fire pipeline.py testfetching
-```
-```bash
-python -m fire pipeline.py testinferencing
-```
-```bash
-python -m fire pipeline.py testdrawing
-```
-The complete routine is started via
-```bash
-python -m fire pipeline.py run
-```
-While using it in a terminal it assumes default values for `address` and `p_max` input values.
   
 ## Roadmap
 - Optimize model predictions by further learning

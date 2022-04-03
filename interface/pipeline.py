@@ -32,7 +32,6 @@ def run(address:str=None, p_max:float=1) -> str:
     print(f"Predicted power with {pdf.shape[0]} timesteps\n")
 
     print(f"Slicing data ...")
-    # x = pdf['date'].to_list()
     x = pdf['date'].to_list()
     y = pdf['P_gen [kW]'].to_list()
     print(f"Sliced {len(x)} time- and {len(y)} power-datapoints\n")
