@@ -6,7 +6,7 @@
 }
 
 .solarscore__footer-creator {
-    flex: 1;
+    flex: 2;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -21,7 +21,6 @@
     font-weight: 300;
     font-size: 15px;
     line-height: 25px;
-    text-transform: capitalize;
     margin: 0 1rem;
 }
 
@@ -41,6 +40,5 @@
     font-weight: 300;
     font-size: 15px;
     line-height: 25px;
-    text-transform: capitalize;
     margin: 0 1rem;
 }
