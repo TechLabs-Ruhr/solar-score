@@ -1,8 +1,7 @@
 .solarscore__header {
     display: flex;
-    flex-direction: column; 
-    flex-wrap: wrap;
-    padding: 0.5rem;
+    flex-direction: row; 
+
 }
 
 .solarscore__header-content {
@@ -12,7 +11,7 @@
     align-items: flex-start;
     flex-direction: column;
    
-    margin-right: 5rem;
+    margin-right: 3rem;
 }
 
 .solarscore__header-content h1 {
@@ -33,16 +32,47 @@
     margin-top: 1.5rem;
 }
 
+.solarscore__image{
+    flex: 1;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width: 150%;
+    height: 150%;
+}
+
+.solarscore__signup_button {
+  margin: 2.5rem 0rem;
+} 
+
+.solarscore__signup_button button {
+    padding: 1rem 5rem;
+    color: #0a1b3b;
+    font-family: var(--font-family);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 25px;
+    background: #faaf40;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    margin: 0rem;
+
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1050px) {
-    .solarscore__header {
-        flex-direction: column;
+    .solarscore__header h1 {
+        font-size: 48px;
+        line-height: 60px;
     }
-    .solarscore__header-content {
-        margin: 0 0 3rem;
+    .solarscore__header p {
+        font-size: 16px;
+        line-height: 24px;
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
     .solarscore__header h1 {
         font-size: 48px;
         line-height: 60px;

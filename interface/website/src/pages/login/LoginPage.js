@@ -1,18 +1,17 @@
 import React from 'react';
 import Login from '../../views/auth/login/Login';
-import { Navbar} from '../../components';
+import { Navbar, Footer} from '../../components';
 import './loginpage.css';
 
 
 const LoginPage = () => {
   return (
     <div className="Login">
-     <div className="gradient__bg">
      <Navbar />
-     </div>
-      <div className="solarscore__flexheader gradient__bg section__margin">
+      <div className="section__margin">
       <Login/>
       </div>
+      <Footer />
   </div>
   )
 };

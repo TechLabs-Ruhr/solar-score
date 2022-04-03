@@ -28,16 +28,14 @@ SECRET_KEY = 'django-insecure-u-#zthz()m2762za(p0qj-1m(099j3a7jnetx%&b=6g^wa$2lx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = []
 
 # mysite/settings.py# Specifies localhost port 3000 where the React
 # server will be running is safe to receive requests
 # from. All all of this.
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
+    'http://localhost:8000'
 ]
 
 # Application definition
@@ -174,10 +172,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 REST_FRAMEWORK = {    
     'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
     'DEFAULT_AUTHENTICATION_CLASSES': [        
-        # 'rest_framework.authentication.TokenAuthentication',    
+        #'rest_framework.authentication.TokenAuthentication',    
         'rest_framework.authentication.BasicAuthentication',    
         ],
-
     # 'DEFAULT_PERMISSION_CLASSES': [
     #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
 }

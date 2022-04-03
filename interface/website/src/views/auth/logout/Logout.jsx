@@ -34,9 +34,11 @@ const Logout = () => {
     <div>
       {loading === false && (
         <Fragment>
-          <div className="solarscore__logout solarscore__logout-content">
+          <div className="solarscore__logout">
+          <div className="solarscore__logout-content">
             <h1>Are you sure you want to logout?</h1>
             <input className="solarscore__logout-button" type='button' value='Logout' onClick={handleLogout} />
+          </div>
           </div>
         </Fragment>
       )}

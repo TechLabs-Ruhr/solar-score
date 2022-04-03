@@ -22,7 +22,7 @@ from users.views import load_testmarian, load_testinka, load_testkatharina, load
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users/', include('users.urls')),
-    # re_path('.*',TemplateView.as_view(template_name="index.html")),
+    #re_path('.*',TemplateView.as_view(template_name="index.html")),
     re_path(r'^api/clients/$', clients_list),
     re_path(r'^api/clients/([0-9])$', clients_detail),
     path('calc/',include('calculator.urls')),

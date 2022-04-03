@@ -1,18 +1,17 @@
 import React from 'react';
 import  Signup from '../../views/auth/signup/Signup';
-import {CTA, Navbar} from '../../components';
+import {Footer, Navbar} from '../../components';
 import './signuppage.css';
 
 
 const SignupPage = () => {
   return (
     <div className="Signup">
-     <div className="gradient__bg">
      <Navbar />
-     </div>
-      <div className="solarscore__flexheader gradient__bg section__margin">
+      <div className="section__margin">
       <Signup/>
       </div>
+      <Footer />
   </div>
   )
 };

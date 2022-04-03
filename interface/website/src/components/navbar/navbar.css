@@ -2,12 +2,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 1rem 6rem;
+    padding: 1rem 4rem;
 }
 
 .solarscore__navbar-links-logo img {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     width: 250px;
     height: 80px;
 }
@@ -25,7 +25,7 @@
     font-size: 18px;
     line-height: 25px;
     text-transform: capitalize;
-    margin: 0 3rem;
+    margin: 0 5rem;
     cursor: pointer; 
 }
 
@@ -36,9 +36,10 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 25px;
-    background: #faaf40;
-    border-radius: 5px;
-    border: 0;
+    background: #fefefe;
+    border-radius: 30px;
+    border: 5;
+    border-color:#faaf40;
     outline: none;
 
     cursor: pointer;

@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "ag-grid-community": "^27.1.0",
+    "ag-grid-react": "^27.1.0",
     "axios": "^0.26.1",
     "plotly.js": "^2.11.1",
     "plotly.js-dist": "^2.11.1",

@@ -46,7 +46,8 @@ const Login = () => {
   };
 
   return (
-    <div className="solarscore__login solarscore__login-content">
+    <div className="solarscore__login">
+      <div className="solarscore__login-content">
       {loading === false && <h1 className="gradient__text">Login</h1>}
       {errors === true && <h2>Cannot log in with provided credentials</h2>}
       {loading === false && (
@@ -69,9 +70,10 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />{' '}
           <br />
-          <input className="solarscore__login-button" type='submit' value='Login' />
+          <input className="solarscore__login-button_login" type='submit' value='Login' />
         </form>
       )}
+      </div>
     </div>
   );
 };

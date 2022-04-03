@@ -1,4 +1,4 @@
-.solarscore__login {
+.solarscore__dashboard {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -23,14 +23,16 @@
     font-size: 35px;
     line-height: 70px;
     letter-spacing: -0.04em;
+    color:#0a1b3b;
 }
 
-.solarscore__dashboard-content h2 {
+.solarscore__dashboard-content p {
     font-family: var(--font-family);
     font-weight: 400;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 27px;
     letter-spacing: 0.00em;
+    color:#0a1b3b
 }
 
 .solarscore__label {
