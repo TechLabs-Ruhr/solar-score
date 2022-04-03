@@ -8,19 +8,22 @@
 # SolarScore
 In times of rising energy prices and the danger of climate change we want to achieve that solar plant owners get the most out of their solar plant.Based on the weather forecast for the next days SolarScore predicts the solar plant's power output so that the owner can plan when to for example charge her/his electric vehicle and it is avoided that energy is not used directly. 
 
-## How to Setup and Run
-In order to setup the project, please proceed as follows:
-
-### Source
-Please clone this repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
+## Requirements
 
 ### OS
-
-At the moment our project only works with Windows as an OS. Not all packages that are part of our environment exist on Mac in the same version. Further, the `model.pkl` is depend on the OS. 
+At the moment our project only works with Windows as the operating system. 
+Not all packages that are part of our template environment exist on Mac in the same version.
+Further, the deep learning model trained on Mac and saved as `model.pkl` cannot be easily loaded on Windows.
 
 ### Python
 Make sure to install the python package manager [Anaconda](https://www.anaconda.com/products/distribution).
 Now you can create a new environment from `environment.yml` lying in the `interface` folder as described [here](https://github.com/TechLabs-Dortmund/solar-score/wiki/How-to-import-the-Python-packages)
+
+### Node.js
+Install [node.js](https://nodejs.org/en/download/).
+
+### Source
+Please clone [this](https://github.com/TechLabs-Dortmund/solar-score.git) repository using "https://github.com/TechLabs-Dortmund/solar-score.git" onto your computer.
 
 ### MapQuest API-key
 With the help of MapQuest the coordinates are requested for a specific adress. 
@@ -29,9 +32,11 @@ Please register at their [webpage](https://developer.mapquest.com/user/login/sig
 ```shell
 api_key = "<that_is_an_api_key>"
 ```
+## How to Setup
+In order to setup the project, please proceed with the following steps.
 
 ### Frontend
-Install [node.js](https://nodejs.org/en/download/) and run the following commands from the `interface.website` folder:
+Start a node command prompt and run the following commands from the `interface.website` folder:
 
 ```bash
   npm install
@@ -40,16 +45,10 @@ Install [node.js](https://nodejs.org/en/download/) and run the following command
 ```bash
   npm run build
 ```
-If you get the error message: `JavaScript Heap Out of Memory`
 
-Then enter this command:
-
+If you get the error message: `JavaScript Heap Out of Memory` please use the next command before retry
 ```bash
   set NODE_OPTIONS=--max_old_space_size=4096
-```
-
-```bash
-  npm start
 ```
 
 ### Backend
@@ -61,6 +60,15 @@ Run the following commands from the `interface` folder:
 ```bash
   python manage.py migrate --run-syncdb
 ```
+
+## How to Run
+
+### Frontend
+```bash
+  npm start
+```
+
+### Backend
 ```bash
   python manage.py runserver
 ```
