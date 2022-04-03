@@ -78,11 +78,13 @@ He/she will get default properties for `address` and `p_max` fields.
 ## How to Run
 
 ### Frontend
+Always start the frontend first using the following command in the `interface` directory.
 ```bash
   npm start
 ```
 
 ### Backend
+Afterwards you can start the backend from the `interface` folder as well.
 ```bash
   python manage.py runserver
 ```
