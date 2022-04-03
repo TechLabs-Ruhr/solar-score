@@ -1,6 +1,6 @@
 import React from 'react';
 import Dashboard from '../../views/dashboard/Dashboard';
-import { Navbar, Prediction} from '../../components';
+import { Navbar, Prediction, Footer} from '../../components';
 import './dashboardpage.css';
 
 const DashboardPage = () => {
@@ -13,6 +13,7 @@ const DashboardPage = () => {
       <Dashboard/>
       {/* <Prediction /> */}
       </div>
+      <Footer />
   </div>
   )
 };

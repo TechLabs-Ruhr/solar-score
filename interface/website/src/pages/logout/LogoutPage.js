@@ -1,6 +1,6 @@
 import React from 'react';
 import  Logout from '../../views/auth/logout/Logout';
-import {CTA, Navbar} from '../../components';
+import {Footer, Navbar} from '../../components';
 import './logoutpage.css';
 
 
@@ -13,6 +13,7 @@ const LogoutPage = () => {
       <div className="solarscore__flexheader gradient__bg section__margin">
       <Logout/>
       </div>
+      <Footer />
   </div>
   )
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from '../../views/auth/login/Login';
-import { Navbar} from '../../components';
+import { Navbar, Footer} from '../../components';
 import './loginpage.css';
 
 
@@ -11,6 +11,7 @@ const LoginPage = () => {
       <div className="section__margin">
       <Login/>
       </div>
+      <Footer />
   </div>
   )
 };

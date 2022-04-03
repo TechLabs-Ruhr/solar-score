@@ -1,6 +1,5 @@
 import React from 'react';
-import { Footer, Header, Signin } from './containers';
-import { Navbar, TestPrediction, TestDenise, TestInka, TestKatharina, TestMarian } from './components';
+import { Navbar, TestPrediction, TestDenise, TestInka, TestKatharina, TestMarian, Footer, Header } from './components';
 import './App.css';
 
 const App = () => {
