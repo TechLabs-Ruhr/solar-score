@@ -175,10 +175,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',    
         #'rest_framework.authentication.BasicAuthentication',    
         ],
-    'DEFAULT_RENDERER_CLASSES': [
-            'rest_framework.renderers.BrowsableAPIRenderer',
-            'rest_framework.renderers.JSONRenderer',
-        ],
+# #    """  'DEFAULT_RENDERER_CLASSES': [
+# #             'rest_framework.renderers.BrowsableAPIRenderer',
+# #             'rest_framework.renderers.JSONRenderer', """
+#         ],
     # 'DEFAULT_PERMISSION_CLASSES': [
     #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
 }
