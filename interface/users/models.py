@@ -5,9 +5,9 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    name = models.CharField(max_length=50)
-    address = models.CharField(max_length=50)
-    pv = models.CharField(max_length=50)
+    name = models.CharField("Name", max_length=50)
+    address = models.CharField("Wohnort", max_length=256, default="Auf der Reihe 2, 45884 Gelsenkirchen, Germany")
+    pv = models.DecimalField("Maximale Leistung", decimal_places=3, max_digits=10, default=15.0)
     
     def __str__(self):
         return self.email
