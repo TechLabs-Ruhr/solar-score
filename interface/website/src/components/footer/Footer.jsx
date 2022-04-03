@@ -16,11 +16,10 @@ const Footer = () => {
     <div className = "solarscore__footer-supporter">
     <p>Supported by:</p>
     <p >TechLabs Dortmund</p>
-  {/*   <div className="techlabs_logo">
-        <img src = {techlabs_logo} alt = "techlabs logo" />
-      </div> */}
+    <div className="techlabs_logo">
+        <img src = {techlabs_logo} alt = "techlabs logo" width="30" height="30" />
+      </div>
     </div>
-  
   </div>
   )
   
