@@ -13,12 +13,12 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: row;
-    margin: 0rem 5rem;
+    margin: -4rem 5rem;
 
 }
 
 .solarscore__footer-creator p {
-    color: #eceadd;
+    color: #6c85b3;
     font-family: var(--font-family);
     font-weight: 300;
     font-size: 15px;
@@ -32,15 +32,20 @@
     justify-content: flex-end;
     align-items: flex-start;
     flex-direction: row;
-    margin: 0rem 5rem;
+    margin: -4rem 5rem;
 
 }
 
 .solarscore__footer-supporter p {
-    color: #eceadd;
+    color: #6c85b3;
     font-family: var(--font-family);
     font-weight: 300;
     font-size: 15px;
     line-height: 25px;
     margin: 0 0.3rem;
+}
+
+.techlabs_logo {
+    margin: -0.6rem 1rem;
+    opacity: 70%;
 }
