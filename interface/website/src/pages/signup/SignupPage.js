@@ -7,9 +7,7 @@ import './signuppage.css';
 const SignupPage = () => {
   return (
     <div className="Signup">
-     <div>
      <Navbar />
-     </div>
       <div className="section__margin">
       <Signup/>
       </div>

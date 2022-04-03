@@ -73,7 +73,7 @@ const Login = () => {
           <input className="solarscore__login-button_login" type='submit' value='Login' />
         </form>
       )}
-    </div>
+      </div>
     </div>
   );
 };
