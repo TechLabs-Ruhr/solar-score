@@ -39,5 +39,5 @@ def clients_detail(request, pk):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        student.delete()
+        client.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

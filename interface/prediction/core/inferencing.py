@@ -3,6 +3,7 @@ from tsai.all import *
 def get_prediction_dataframe(df:pd.DataFrame, p_max:float=1) -> pd.DataFrame:
     """"""
     preds = p_max * np.array(torch.squeeze(dataframe.predict(df).preds))
+    preds[preds < 0] = 0
     pdf = df.copy()
     pdf['P_gen [kW]'] = pd.Series(preds)
     return pdf

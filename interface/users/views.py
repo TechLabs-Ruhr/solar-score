@@ -1,4 +1,3 @@
-
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAdminUser
 from .models import CustomUser
@@ -53,12 +52,14 @@ def load_testmarian(request):
     logger.critical(f"request is {request}")
     logger.critical("DEMO DATA LOADING CALLED")
 
-    x,y = helperFunctionPipeline() # this could be your python solar score precition script
+    # user:CustomUser = CustomUser.objects.get(pk=0)
+    # x,y = pipeline.run(user.address, user.pv)
+    x,y = pipeline.run()
 
     # here could the chart be inserted as sting like "chart":"<div> .. </div>"
     data = {"message":"test", "x":x, "y":y} 
 
-    return HttpResponse(json.dumps(data), content_type = "application/json")
+    return HttpResponse(json.dumps(data, default=str), content_type = "application/json")
 
 @api_view(['GET'])
 def load_testdenise(request):
@@ -99,12 +100,6 @@ def load_testprediction(request):
 
     return HttpResponse(json.dumps(data), content_type = "application/json")
 
-
-def helperFunctionPipeline():
-    """Returns power data over time."""
-
-    x,y = pipeline.run()
-    return x,y
 
 def helperFunction42():
     """Returns just the integer '42'."""
