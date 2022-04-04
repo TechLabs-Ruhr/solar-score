@@ -53,11 +53,11 @@ def load_testinka(request):
 def load_testmarian(request):
     """Backend data provider for Marian's test button."""
     #  critical logging level so that it really gets displayed in the console
-    logger.critical(f"request is {request}")
+    logger.critical(f"request is {request} with {request.user.id}")
     logger.critical("'load_testmarian' called")
 
     try:
-        user:CustomUser = CustomUser.objects.get(pk=1)
+        user:CustomUser = CustomUser.objects.get(pk=request.user.id)
 
         print(float(user.pv))
 
@@ -109,7 +109,7 @@ def load_testkatharina(request):
 @api_view(['GET'])
 def load_testprediction(request):
     #  critical logging level so that it really gets displayed in the console
-    logger.critical(f"request is {request}")
+    logger.critical(f"request is {request} with {request.user.id}")
     logger.critical("DEMO DATA LOADING CALLED")
 
     # here could the chart be inserted as sting like "chart":"<div> .. </div>"

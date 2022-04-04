@@ -33,7 +33,6 @@ const TestMarian = () => {
           ]}
           layout={
             {
-              
               title: 'Power Prediction',
               titlefont: {family:'Manrope, sans-serif', size: 20, color: '#0A1B3B'},
               xaxis: {
@@ -45,7 +44,7 @@ const TestMarian = () => {
                 }
               },
               yaxis: {
-                title: 'Power in kW',
+                title: 'Solar power in [kW]',
                 titlefont: {
                   family: 'Manrope, sans-serif',
                   size: 18,
