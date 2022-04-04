@@ -47,7 +47,7 @@ const TestPrediction = () => {
             }
           ]}
           layout={{
-            width: 1250,
+            width: 1000,
             plot_bgcolor: 'rgb(255, 175, 64)',
             title: 'Prediction chart',
             xaxis: {

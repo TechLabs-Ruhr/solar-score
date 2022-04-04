@@ -51,7 +51,7 @@ const TestMarian = () => {
             {
               title: 'Power Prediction',
               titlefont: { family: 'Manrope, sans-serif', size: 20, color: '#0A1B3B' },
-              width: 1250,
+              width: 1000,
               plot_bgcolor: 'rgb(255, 175, 64)',
               xaxis: {
                 type: 'date',
