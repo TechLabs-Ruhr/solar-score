@@ -33,9 +33,9 @@ const TestMarian = () => {
           ]}
           layout={
             {
-              title: 'Diagramm',
+              title: 'Prediction chart',
               xaxis: {
-                title: 'Zukünftiges Datum',
+                title: 'Future date',
                 titlefont: {
                   family: 'Courier New, monospace',
                   size: 18,
@@ -43,7 +43,7 @@ const TestMarian = () => {
                 }
               },
               yaxis: {
-                title: 'Leistung in [kW]',
+                title: 'Solar power in [kW]',
                 titlefont: {
                   family: 'Courier New, monospace',
                   size: 18,
