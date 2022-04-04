@@ -35,7 +35,7 @@ api_key = "<that_is_an_api_key>"
 ## How to Setup
 In order to setup the project, please proceed with the following steps.
 
-### Frontend
+### Frontend (3000)
 Start a node command prompt and run the following commands from the `interface.website` folder:
 
 ```bash
@@ -55,7 +55,7 @@ If you get the error message: `JavaScript Heap Out of Memory` please use the nex
   set NODE_OPTIONS=--max_old_space_size=4096
 ```
 
-### Backend
+### Backend (8000)
 
 Delete the `migrations` folder and `db.sqlite3` in order to create new versions in the next step.
 
