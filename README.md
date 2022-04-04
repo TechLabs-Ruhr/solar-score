@@ -92,7 +92,11 @@ Afterwards you can start the backend from the `interface` folder as well.
 ```bash
   python manage.py runserver
 ```
-  
+ 
+## Troubleshooting
+If the website behaves strange it is always a good idea to start close the tab and restart the server.
+Your current session will be rememberred and you can try again without losing time.
+ 
 ## Roadmap
 - Optimize model predictions by further learning
 - Feedback loop for user data (Import)
