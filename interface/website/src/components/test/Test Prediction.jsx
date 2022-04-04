@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Test Styling.css';
+import './Prediction.css';
 import Plot from 'react-plotly.js'
 
 const TestPrediction = () => {
@@ -18,9 +18,9 @@ const TestPrediction = () => {
       });
   };
   return (
-    <div className="solarscore__test" id="test">
-      <div className="solarscore__test-content">
-        <h1 className="gradient-text">Prediction Test </h1>
+    <div className="solarscore__prediction section__margin" id="test">
+      <div className="solarscore__prediction-content">
+        <h1 className="gradient-text">Prediction Plot </h1>
         <p> This section is for testing the final layout and should not be removed. </p>
         <Plot
           data={
@@ -33,7 +33,7 @@ const TestPrediction = () => {
             ]
           }
         />
-        <button className="solarscore__test-button" onClick={requestData}>New power prediction</button>
+        <button className="solarscore__prediction-button" onClick={requestData}>New power prediction</button>
       </div>
     </div>
   )
