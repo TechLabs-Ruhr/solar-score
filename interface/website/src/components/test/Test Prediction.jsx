@@ -36,9 +36,9 @@ const TestPrediction = () => {
                 width: 20,
               },
               marker: {
-                color: 'rgb(10, 27, 59)',
+                color: 'rgb(255, 175, 64)',
                 opacity: 1,
-                size: 5,
+                size: 6,
                 line: {
                   color: 'white',
                   width: 2,
