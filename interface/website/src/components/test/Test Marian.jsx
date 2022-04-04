@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Test Styling.css';
+import './Prediction.css';
 import Plot from 'react-plotly.js'
 
 const TestMarian = () => {
@@ -18,11 +18,10 @@ const TestMarian = () => {
       });
   };
   return (
-    <div className="solarscore__test section__margin" id="test">
-      <div className="solarscore__test-content">
-        <h1 className="gradient-text">Test Marian</h1>
-        <h4> This is the private test region for Marian and should not be removed. </h4>
-        <button className="solarscore__test-button" onClick={requestData}>Test Request</button>
+    <div className="solarscore__prediction section__margin" id="test">
+      <div className="solarscore__prediction-content">
+        <h1 className="gradient-text">Prediction Plot</h1>
+        <p> This graph shows the predicted solar power outcome for the next x days in Gelsenkirchen. </p>
         <Plot
           data={[
             {
@@ -47,29 +46,33 @@ const TestMarian = () => {
               },
             }
           ]}
-          layout={{
-            width: 1250,
-            plot_bgcolor: 'rgb(255, 175, 64)',
-            title: 'Prediction chart',
-            xaxis: {
-              type: 'date',
-              title: 'Future date',
-              titlefont: {
-                family: 'Courier New, monospace',
-                size: 18,
-                color: '#7f7f7f'
+
+          layout={
+            {
+              title: 'Power Prediction',
+              titlefont: { family: 'Manrope, sans-serif', size: 20, color: '#0A1B3B' },
+              width: 1250,
+              plot_bgcolor: 'rgb(255, 175, 64)',
+              xaxis: {
+                type: 'date',
+                title: 'Time in [h]',
+                titlefont: {
+                  family: 'Manrope, sans-serif',
+                  size: 18,
+                  color: '#0A1B3B'
+                }
               },
-            },
-            yaxis: {
-              title: 'Solar power in [kW]',
-              titlefont: {
-                family: 'Courier New, monospace',
-                size: 18,
-                color: '#7f7f7f'
+              yaxis: {
+                title: 'Solar power in [kW]',
+                titlefont: {
+                  family: 'Manrope, sans-serif',
+                  size: 18,
+                  color: '#0A1B3B'
+                }
               },
-            },
-          }}
+            }}
         />
+        <button className="solarscore__prediction-button" onClick={requestData}>Predict</button>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Test Styling.css';
+import './Prediction.css';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -21,8 +21,8 @@ const TestKatharina_datatable = () => {
   ]);
 
   return (
-    <div className="solarscore__test section__margin" id="test">
-      <div className="solarscore__test-content">
+    <div className="solarscore__prediction section__margin" id="test">
+      <div className="solarscore__prediction-content">
         <h1 className="gradient-text">Test Katharina</h1>
         <h4> This is the private test region for Katharina and should not be removed. </h4>
         <div className="ag-theme-alpine" style={{height: 400, width: 400}}>

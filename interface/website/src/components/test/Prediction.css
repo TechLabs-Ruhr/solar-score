@@ -1,9 +1,9 @@
-.solarscore__test {
+.solarscore__prediction {
     display: flex;
     flex-direction: column;
 }
 
-.solarscore__test-content {
+.solarscore__prediction-content {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -12,28 +12,30 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-right: 2rem;
     margin-top: 2rem;
-    padding: 4rem 8rem;
+    margin-bottom: 2rem;
+    padding: 5rem 8rem;
 }
 
-.solarscore__test-content h1 {
+.solarscore__prediction-content h1 {
     font-family: var(--font-family);
     font-weight: 800;
     font-size: 30px;
-    line-height: 75px;
+    line-height: 50px;
     letter-spacing: -0.04em;
     color:#0a1b3b;
 }
 
-.solarscore__test-content p {
+.solarscore__prediction-content p {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 20px;
-    line-height: 75px;
+    line-height: 40px;
     letter-spacing: -0.0em;
-    color:#0a1b3b
+    color:#0a1b3b; 
+    margin-bottom: 1rem;
 }
 
-.solarscore__test-button {
+.solarscore__prediction-button {
     padding: 0.5rem 2rem;
     color: #0a1b3b;
     font-family: var(--font-family);
@@ -44,7 +46,6 @@
     border-radius: 10px;
     border: 0;
     outline: none;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin: 2rem 0rem;
     cursor: pointer;
 }
