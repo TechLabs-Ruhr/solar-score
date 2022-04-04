@@ -28,30 +28,47 @@ const TestMarian = () => {
             {
               x: result.x,
               y: result.y,
-              type: "scatter"
+              type: "scatter gl",
+              fill: 'tozeroy',
+              mode: 'markers',
+              fillcolor: 'rgb(10, 27, 59)',
+              line: {
+                color: 'white',
+                width: 20,
+              },
+              marker: {
+                color: 'rgb(10, 27, 59)',
+                opacity: 1,
+                size: 5,
+                line: {
+                  color: 'white',
+                  width: 2,
+                }
+              },
             }
           ]}
-          layout={
-            {
-              title: 'Prediction chart',
-              xaxis: {
-                title: 'Future date',
-                titlefont: {
-                  family: 'Courier New, monospace',
-                  size: 18,
-                  color: '#7f7f7f'
-                }
+          layout={{
+            width: 1250,
+            plot_bgcolor: 'rgb(255, 175, 64)',
+            title: 'Prediction chart',
+            xaxis: {
+              type: 'date',
+              title: 'Future date',
+              titlefont: {
+                family: 'Courier New, monospace',
+                size: 18,
+                color: '#7f7f7f'
               },
-              yaxis: {
-                title: 'Solar power in [kW]',
-                titlefont: {
-                  family: 'Courier New, monospace',
-                  size: 18,
-                  color: '#7f7f7f'
-                }
+            },
+            yaxis: {
+              title: 'Solar power in [kW]',
+              titlefont: {
+                family: 'Courier New, monospace',
+                size: 18,
+                color: '#7f7f7f'
               },
-            }
-          }
+            },
+          }}
         />
       </div>
     </div>

@@ -7,11 +7,13 @@ from rest_framework.decorators import api_view
 from rest_framework.authentication import SessionAuthentication
 from rest_framework import viewsets
 
+import numpy as np
 import pipeline
 import sys
 import json
 import logging
 logger = logging.getLogger(__name__)
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
@@ -105,7 +107,10 @@ def load_testprediction(request):
 
     # here could the chart be inserted as sting like "chart":"<div> .. </div>"
 
-    data = {"message":"test", "x": [0,1,2,3,4], "y": [1,3,3,7,42]} 
+    x = np.linspace(0, 20*np.pi, 240).tolist()
+    y = (np.sin(x)+1).tolist()
+
+    data = {"message":"test", "x": x, "y": y} 
 
     return HttpResponse(json.dumps(data), content_type = "application/json")
 
