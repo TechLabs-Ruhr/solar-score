@@ -29,8 +29,8 @@ const Dashboard = () => {
       {loading === false && (
         <Fragment>
           <div className="solarscore__dashboard-content">
-          <h1>Hello {userEmail}!</h1>
-          <p>This page is still in the development phase. You can see the latest prediction here. Unfortunately, this is not customized for your location yet. But we will keep you posted when this function is integrated. Stay tuned!</p>
+            <h1>Hello {userEmail}!</h1>
+            <p>This page is still under development but you can already see your newest prediction here.</p>
           </div>
         </Fragment>
       )}

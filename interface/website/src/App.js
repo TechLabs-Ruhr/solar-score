@@ -7,12 +7,12 @@ const App = () => {
     <div className="App">
       <Navbar />
       <Header />
-      <TestPrediction />
+      {/* <TestPrediction />
       <TestInka />
       <TestMarian />
       <TestDenise />
       <TestKatharina />
-      <TestKatharina_datatable />
+      <TestKatharina_datatable /> */}
       <Footer />
     </div>
   )

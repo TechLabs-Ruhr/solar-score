@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Prediction.css';
+import '../core/Prediction.css';
 
 const TestDenise = () => {
   const [result, setLoadedData] = useState([]);

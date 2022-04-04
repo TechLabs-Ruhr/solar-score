@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../core/Prediction.css';
+import './Prediction.css';
 import Plot from 'react-plotly.js'
 
-const TestMarian = () => {
+const PowerChart = () => {
   const [result, setLoadedData] = useState([]);
 
   const requestData = () => {
     axios
-      .get('http://127.0.0.1:8000/testmarian')
+      .get('http://127.0.0.1:8000/powerchart')
       .then((res) => {
         setLoadedData(res.data);
         console.log(res);
@@ -21,7 +21,7 @@ const TestMarian = () => {
     <div className="solarscore__prediction section__margin" id="test">
       <div className="solarscore__prediction-content">
         <h1 className="gradient-text">Prediction Plot</h1>
-        <p> This graph shows the predicted solar power outcome for the next x days in Gelsenkirchen. </p>
+        <p> This graph visualizes the predicted solar power outcome for the next ten days at your location. </p>
         <Plot
           data={[
             {
@@ -36,7 +36,7 @@ const TestMarian = () => {
                 width: 20,
               },
               marker: {
-                color: 'rgb(10, 27, 59)',
+                color: 'rgb(255, 175, 64)',
                 opacity: 1,
                 size: 5,
                 line: {
@@ -52,6 +52,7 @@ const TestMarian = () => {
               title: 'Power Prediction',
               titlefont: { family: 'Manrope, sans-serif', size: 20, color: '#0A1B3B' },
               width: 1000,
+              height: 450,
               plot_bgcolor: 'rgb(255, 175, 64)',
               xaxis: {
                 type: 'date',
@@ -73,9 +74,10 @@ const TestMarian = () => {
             }}
         />
         <button className="solarscore__prediction-button" onClick={requestData}>Predict</button>
+        <p> The process might take a few seconds. </p>
       </div>
     </div>
   )
 };
 
-export default TestMarian;
+export default PowerChart;

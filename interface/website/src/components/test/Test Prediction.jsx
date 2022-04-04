@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Prediction.css';
+import '../core/Prediction.css';
 import Plot from 'react-plotly.js'
 
 const TestPrediction = () => {

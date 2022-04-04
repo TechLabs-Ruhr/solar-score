@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Prediction.css';
+import '../core/Prediction.css';
 import axios from 'axios';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
