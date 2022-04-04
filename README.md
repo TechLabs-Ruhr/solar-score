@@ -46,6 +46,10 @@ Start a node command prompt and run the following commands from the `interface.w
   npm run build
 ```
 
+```bash
+npm install --save ag-grid-community ag-grid-react
+```
+
 If you get the error message: `JavaScript Heap Out of Memory` please use the next command before retry
 ```bash
   set NODE_OPTIONS=--max_old_space_size=4096

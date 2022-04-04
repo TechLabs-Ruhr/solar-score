@@ -7,7 +7,7 @@ const Header = () => {
   return <div className="solarscore__header section__margin" id="home">
     <div className="solarscore__header-content">
       <h1 className="gradient__text"> Welcome To SolarScore</h1>
-      <p>With precice predictions we help you to get most out of your solar plant.</p>
+      <p>With precise predictions we help you to get most out of your solar plant.</p>
       <p>Get started and sign up your solar plant now.</p>
       <div className="solarscore__signup_button">
               <Link to ="/signup">
