@@ -33,21 +33,22 @@ const TestMarian = () => {
           ]}
           layout={
             {
-              title: 'Diagramm',
+              title: 'Power Prediction',
+              titlefont: {family:'Manrope, sans-serif', size: 20, color: '#0A1B3B'},
               xaxis: {
-                title: 'Zukünftiges Datum',
+                title: 'Time in h',
                 titlefont: {
-                  family: 'Courier New, monospace',
+                  family: 'Manrope, sans-serif',
                   size: 18,
-                  color: '#7f7f7f'
+                  color: '#0A1B3B'
                 }
               },
               yaxis: {
-                title: 'Leistung in [kW]',
+                title: 'Solar power in [kW]',
                 titlefont: {
-                  family: 'Courier New, monospace',
+                  family: 'Manrope, sans-serif',
                   size: 18,
-                  color: '#7f7f7f'
+                  color: '#0A1B3B'
                 }
               },
             }

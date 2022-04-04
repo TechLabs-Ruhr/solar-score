@@ -17,7 +17,7 @@ const TestKatharina = () => {
     axios
       .get('http://127.0.0.1:8000/testkatharina')
       .then((result) => {
-        setRowData(rowData);
+        setRowData(result.data);
         console.log(result);
       })
       .catch((err) => {

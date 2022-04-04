@@ -85,7 +85,7 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <label className="solarscore__label" htmlFor='pv'>PV max kW/h:</label><br />
+        <label className="solarscore__label" htmlFor='pv'>Max power [kW]:</label><br />
         <input className="solarscore__signup-messagebox"
           name='pv'
           type='text'
