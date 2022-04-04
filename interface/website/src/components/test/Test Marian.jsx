@@ -24,14 +24,33 @@ const TestMarian = () => {
         <h4> This is the private test region for Marian and should not be removed. </h4>
         <button className="solarscore__test-button" onClick={requestData}>Test Request</button>
         <Plot
-          data={
-            [
-              {
-                x: result.x,
-                y: result.y,
-                type: "scatter"
-              }
-            ]
+          data={[
+            {
+              x: result.x,
+              y: result.y,
+              type: "scatter"
+            }
+          ]}
+          layout={
+            {
+              title: 'Diagramm',
+              xaxis: {
+                title: 'Zukünftiges Datum',
+                titlefont: {
+                  family: 'Courier New, monospace',
+                  size: 18,
+                  color: '#7f7f7f'
+                }
+              },
+              yaxis: {
+                title: 'Leistung in [kW]',
+                titlefont: {
+                  family: 'Courier New, monospace',
+                  size: 18,
+                  color: '#7f7f7f'
+                }
+              },
+            }
           }
         />
       </div>
