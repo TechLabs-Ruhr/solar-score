@@ -23,7 +23,7 @@ With the help of MapQuest the coordinates are requested for a specific adress.
 Please register at their [webpage](https://developer.mapquest.com/user/login/sign-up) and copy your personal API key in an `.env` file to the `interface.data` folder:
 
 ```shell
-api_key = "<that_is_an_api_key>"
+  api_key = "<that_is_an_api_key>"
 ```
 ## How to Setup
 In order to setup the project, please proceed with the following steps.
