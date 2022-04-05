@@ -27,13 +27,13 @@ def run(address:str=None, p_max:float=1) -> str:
     fdf = fetching.get_forecast_dataframe(address=address)
     print(f"Fetched weather with {fdf.shape[0]} timesteps and {fdf.shape[1]} features\n")
     if fdf.isna().sum().sum() > 0:
-        print(f"Nan values in weather data detected!")
+        print(f"{fdf.isna().sum().sum()} nan values in weather data detected!\n")
 
     print(f"Predicting power output ...")
     pdf = inferencing.get_prediction_dataframe(df=fdf, p_max=p_max)
     print(f"Predicted power with {pdf.shape[0]} timesteps\n")
     if pdf['P_gen [kW]'].isna().sum() > 0:
-        print(f"Nan values in prediction data detected!")
+        print(f"{pdf['P_gen [kW]'].isna().sum()} nan values in prediction data detected!\n")
 
     print(f"Slicing data ...")
     x = pdf['date'].to_list()
