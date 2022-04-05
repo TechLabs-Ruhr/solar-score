@@ -40,7 +40,7 @@ Start a node command prompt and run the following commands from the `interface.w
 ```
 
 ```bash
-npm install --save ag-grid-community ag-grid-react
+  npm install --save ag-grid-community ag-grid-react
 ```
 
 If you get the error message: `JavaScript Heap Out of Memory` please use the next command before retry
@@ -91,6 +91,14 @@ If the website behaves strange it is always a good idea to close the tab and res
 Your current session will be remembered and you can try again without losing time.
 
 Example for strange behaviour: `Not Found: /powerchart`
+
+If the plot is not displayed, you can try to create and use a superuser.
+
+```bash
+  python manage.py createsuperuser
+```
+
+The data entered here can be used as login for the website. 
 
 ## Examples / Functions
 Our project includes the following features: 
