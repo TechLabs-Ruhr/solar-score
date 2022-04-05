@@ -82,7 +82,7 @@ He/she will get default properties for `address` and `p_max` fields.
 ## How to Run
 
 ### Frontend
-Always start the frontend first using the following command in the `interface` directory.
+Always start the frontend first using the following command in the `interface.website` directory.
 ```bash
   npm start
 ```
