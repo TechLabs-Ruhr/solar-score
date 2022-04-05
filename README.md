@@ -101,9 +101,9 @@ Example for strange behaviour: `Not Found: /powerchart`
 
 ## Examples / Functions
 Our project includes the following features: 
-- SignUp - Create your own user profile. Enter your location, the power of your solar plant and a secure password.  
-- LogIn - Enter your user data to log in.
-- Dashboard - Visit your dashboard and create your prediction by clicking the button. You will receive a plot and a table with hourly data.
+- SignUp - Create your own user profile. Enter your name, mailadress, location, the power of your solar plant, a username and a secure password.  
+- LogIn - Enter your user data (mail and password) to log in.
+- Dashboard - Visit your dashboard and create your personal prediction by clicking the button. You will receive a plot and a table with hourly data for your solar plant.
 - Logout - Finished? Click here to signout. 
  
 ## Roadmap
