@@ -94,8 +94,8 @@ Afterwards you can start the backend from the `interface` folder as well.
 ```
  
 ## Troubleshooting
-If the website behaves strange it is always a good idea to start close the tab and restart the server.
-Your current session will be rememberred and you can try again without losing time.
+If the website behaves strange it is always a good idea to close the tab and restart the server.
+Your current session will be remembered and you can try again without losing time.
  
 ## Roadmap
 - Optimize model predictions by further learning
