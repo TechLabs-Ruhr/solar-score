@@ -100,10 +100,11 @@ Your current session will be remembered and you can try again without losing tim
 Example for strange behaviour: `Not Found: /powerchart`
 
 ## Examples / Functions
-- 1.: SignUp - Create your own user profile. Enter your location, the power of your solar plant and a secure password.  
-- 2.: LogIn - Enter your user data to log in.
-- 3.: Dashboard - Visit your dashboard and create your prediction by clicking the button. You will receive a plot and a table with hourly data.
-- 4.: Logout - Finished? Click here to signout. 
+Our project includes the following features: 
+- SignUp - Create your own user profile. Enter your location, the power of your solar plant and a secure password.  
+- LogIn - Enter your user data to log in.
+- Dashboard - Visit your dashboard and create your prediction by clicking the button. You will receive a plot and a table with hourly data.
+- Logout - Finished? Click here to signout. 
  
 ## Roadmap
 - Optimize model predictions by further learning
