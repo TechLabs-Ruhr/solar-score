@@ -26,10 +26,10 @@ const PowerTable = () => {
   };
 
   return (
-    <div className="solarscore__prediction section__margin" id="test">
+    <div className="solarscore__prediction" id="test">
       <div className="solarscore__prediction-content">
         <h1 className="gradient-text">Prediction Table</h1>
-        <p> This table lists the predicted solar power outcome for the next ten days at your location. </p>
+        <p1> This table lists the predicted solar power outcome for the next ten days at your location. </p1>
         <div className="ag-theme-material" style={{ width: 1000, height: 300, }}>
           <AgGridReact
             rowData={rowData}
@@ -38,7 +38,7 @@ const PowerTable = () => {
           ></AgGridReact>
         </div>
         <button className="solarscore__prediction-button" onClick={requestData}>Predict</button>
-        <p> The process might take a few seconds. </p>
+        <p2> The process might take a few seconds. </p2>
       </div>
     </div>
   )

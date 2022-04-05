@@ -18,10 +18,10 @@ const PowerChart = () => {
       });
   };
   return (
-    <div className="solarscore__prediction section__margin" id="test">
+    <div className="solarscore__prediction" id="test">
       <div className="solarscore__prediction-content">
         <h1 className="gradient-text">Prediction Plot</h1>
-        <p> This graph visualizes the predicted solar power outcome for the next ten days at your location. </p>
+        <p1> This graph visualizes the predicted solar power outcome for the next ten days at your location. </p1>
         <Plot
           data={[
             {
@@ -74,7 +74,7 @@ const PowerChart = () => {
             }}
         />
         <button className="solarscore__prediction-button" onClick={requestData}>Predict</button>
-        <p> The process might take a few seconds. </p>
+        <p2> The process might take a few seconds. </p2>
       </div>
     </div>
   )

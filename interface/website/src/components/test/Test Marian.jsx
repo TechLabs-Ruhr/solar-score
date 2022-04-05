@@ -21,7 +21,7 @@ const TestMarian = () => {
     <div className="solarscore__prediction section__margin" id="test">
       <div className="solarscore__prediction-content">
         <h1 className="gradient-text">Prediction Plot</h1>
-        <p> This graph shows the predicted solar power outcome for the next x days in Gelsenkirchen. </p>
+        <p> This graph shows the predicted solar power outcome for the next 10 days in Gelsenkirchen. </p>
         <Plot
           data={[
             {

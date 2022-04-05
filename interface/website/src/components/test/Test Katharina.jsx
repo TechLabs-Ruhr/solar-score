@@ -29,7 +29,7 @@ const TestKatharina = () => {
     <div className="solarscore__prediction section__margin" id="test">
       <div className="solarscore__prediction-content">
         <h1 className="gradient-text">Prediction Table</h1>
-        <p> This table shows the predicted solar power for the next day. </p>
+        <p> This table shows the predicted solar power outcome for the next day. </p>
         <div className="ag-theme-material" style={{ height: 380, width: 350}}>
           <AgGridReact
             rowData={rowData}
