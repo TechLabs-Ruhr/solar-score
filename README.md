@@ -94,8 +94,10 @@ Afterwards you can start the backend from the `interface` folder as well.
 ```
  
 ## Troubleshooting
-If the website behaves strange it is always a good idea to close the tab and restart the server.
+If the website behaves strange it is always a good idea to close the tab and restart the server or just copy in `http://127.0.0.1:8000/` in your search line again.
 Your current session will be remembered and you can try again without losing time.
+
+Example for strange behaviour: `Not Found: /powerchart`
  
 ## Roadmap
 - Optimize model predictions by further learning
