@@ -57,7 +57,7 @@ If you get the error message: `JavaScript Heap Out of Memory` please use the nex
 
 ### Backend (8000)
 
-Delete the `migrations` folder and `db.sqlite3` in order to create new versions in the next step.
+Delete the `migrations` folder (interface/users) and `db.sqlite3` (interface) in order to create new versions in the next step.
 
 Run the following commands from the `interface` folder:
 
@@ -101,7 +101,7 @@ Example for strange behaviour: `Not Found: /powerchart`
 
 ## Examples / Functions
 Our project includes the following features: 
-- SignUp - Create your own user profile. Enter your name, mailadress, location, the power of your solar plant, a username and a secure password.  
+- SignUp - Create your own user profile. Enter your name, mailadress, location, the power of your solar plant, a username and a secure password (at least 8 characters including a special character)
 - LogIn - Enter your user data (mail and password) to log in.
 - Dashboard - Visit your dashboard and create your personal prediction by clicking the button. You will receive a plot and a table with hourly data for your solar plant.
 - Logout - Finished? Click here to signout. 
