@@ -10,7 +10,6 @@
     align-items: flex-start;
     flex-direction: column;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    margin-right: 2rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 5rem 8rem;
@@ -25,7 +24,7 @@
     color:#0a1b3b;
 }
 
-.solarscore__prediction-content p {
+.solarscore__prediction-content p1 {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 20px;
@@ -33,6 +32,16 @@
     letter-spacing: -0.0em;
     color:#0a1b3b; 
     margin-bottom: 1rem;
+}
+
+.solarscore__prediction-content p2 {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.0em;
+    color:#0a1b3b; 
+    margin: 1rem 0rem;
 }
 
 .solarscore__prediction-button {
@@ -46,6 +55,6 @@
     border-radius: 10px;
     border: 0;
     outline: none;
-    margin: 2rem 0rem;
+    margin-top: 2rem;
     cursor: pointer;
 }
