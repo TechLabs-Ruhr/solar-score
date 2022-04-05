@@ -92,7 +92,7 @@ Your current session will be remembered and you can try again without losing tim
 
 Example for strange behaviour: `Not Found: /powerchart`
 
-If the plot is not displayed, you can try to create and use a superuser.
+If the plot is not displayed, you can try to create and use a superuser:
 
 ```bash
   python manage.py createsuperuser
@@ -101,7 +101,9 @@ If the plot is not displayed, you can try to create and use a superuser.
 The data entered here can be used as login for the website. 
 
 Sometimes the requested address can be the problem. Then the weather data contains NaN-Values.
-The address must have a format like: `Auf der Reihe 2, 45884 Gelsenkirchen,Germany`
+The address must have a format like: 
+
+`Auf der Reihe 2, 45884 Gelsenkirchen,Germany`
 
 ## Examples / Functions
 Our project includes the following features: 
