@@ -100,6 +100,9 @@ If the plot is not displayed, you can try to create and use a superuser.
 
 The data entered here can be used as login for the website. 
 
+Sometimes the requested address can be the problem. Then the weather data contains NaN-Values.
+The address must have a format like: `Auf der Reihe 2, 45884 Gelsenkirchen,Germany`
+
 ## Examples / Functions
 Our project includes the following features: 
 - SignUp - Create your own user profile. Enter your name, mailadress, location, the power of your solar plant, a username and a secure password (at least 8 characters including a special character)
